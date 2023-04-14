@@ -68,8 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Articles.aspx" />
+    <Content Include="Content\estilos.css" />
     <Content Include="Default.aspx" />
     <Content Include="Details.aspx" />
+    <Content Include="Scripts\JavaScript.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -113,10 +115,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\" />
-    <Folder Include="Script\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{b828ce7c-087d-4c3a-bf13-dfce2ccefd84}</Project>

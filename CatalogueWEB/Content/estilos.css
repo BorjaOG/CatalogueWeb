@@ -1,0 +1,26 @@
+.card-img-top {
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+}
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center; /* Centra el contenido del footer */
+    background-color: #101010; /* Agrega un color de fondo al footer para diferenciarlo del resto de la página */
+    margin-top: 15px;
+}
+    .footer button {
+        margin: 4px auto; /* Agrega un margen de 10px en la parte superior e inferior y centrado horizontalmente */
+        padding: 5px 10px; /* Agrega un margen de 5px en la parte superior e inferior y 10px en los lados derecho e izquierdo */
+    }
+
+
+
+
+
+
+
