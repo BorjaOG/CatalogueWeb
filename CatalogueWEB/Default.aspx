@@ -8,19 +8,21 @@
     <h1>Home</h1>
     <p>Welcome to the Catalogue</p>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <% foreach (Domain.Articulo arti in ListaArticulos) { %>
-        <div class="col">
-            <div class="card">
-                <img src="<%: arti.UrlImagen %>" alt="<%: arti.Nombre %>" class="card-img-top" />
-                <div class="card-body">
-                    <h5 class="card-title"><%: arti.Nombre %></h5>
-                    <p class="card-text"><%: arti.Descripcion %></p>
-                    <a href="Details.aspx?Id=<%:arti.Id %>">View Details</a>
+    <div class="row row-cols-1 row-cols-md-3 g-4">       
+        <asp:Repeater ID="RepeaterArticles" runat="server">
+            <ItemTemplate>
+                <div class="col">
+                    <div class="card">
+                        <img src="<%#Eval("UrlImagen") %>" alt="..." class="card-img-top" />
+                        <div class="card-body">
+                            <h5 class="card-title"><%#Eval("Nombre") %></h5>
+                            <p class="card-text"><%#Eval("Descripcion") %></p>
+                            <a href="Details.aspx?Id=<%#Eval("Id") %>">View Details</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <% } %>
+            </ItemTemplate>
+        </asp:Repeater>
     </div>
 </asp:Content>
 

@@ -17,6 +17,11 @@ namespace CatalogueWEB
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             ListaArticulos = negocio.listarSP();
+            if (!IsPostBack)
+            {
+              RepeaterArticles.DataSource = ListaArticulos;
+              RepeaterArticles.DataBind();
+            }
            
         }
     }

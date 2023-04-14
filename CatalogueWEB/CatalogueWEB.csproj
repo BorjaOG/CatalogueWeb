@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Articles.aspx" />
+    <Content Include="ArticlesForm.aspx" />
     <Content Include="Content\estilos.css" />
     <Content Include="Default.aspx" />
     <Content Include="Details.aspx" />
@@ -81,6 +82,13 @@
     </Compile>
     <Compile Include="Articles.aspx.designer.cs">
       <DependentUpon>Articles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ArticlesForm.aspx.cs">
+      <DependentUpon>ArticlesForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArticlesForm.aspx.designer.cs">
+      <DependentUpon>ArticlesForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
