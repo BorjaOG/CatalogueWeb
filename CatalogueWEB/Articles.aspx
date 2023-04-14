@@ -4,7 +4,7 @@
     <link href="Content/estilos.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Articles</h1>
+    <h1 class="">Articles</h1>
     <asp:GridView ID="dgvArticles" runat="server" DataKeyNames="Id" CssClass="table"
         AutoGenerateColumns="false" OnSelectedIndexChanged="dgvArticles_SelectedIndexChanged"
         OnPageIndexChanging="dgvArticles_PageIndexChanging" 

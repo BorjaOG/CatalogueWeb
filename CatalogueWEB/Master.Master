@@ -20,6 +20,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
@@ -35,12 +36,13 @@
                     </div>
                 </div>
             </nav>
+            <hr />
             <div class="container">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
-            <footer class="footer">                                    
-                    <button type="button" class="btn btn-info btn-sm">Contact Us</button>                                   
+            <footer class="footer">
+                <button type="button" class="btn btn-info btn-sm">Contact Us</button>
             </footer>
         </div>
     </form>
