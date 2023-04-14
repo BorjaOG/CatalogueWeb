@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Catalogue.Web")]
+[assembly: AssemblyTitle("CatalogueWEB")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Catalogue.Web")]
+[assembly: AssemblyProduct("CatalogueWEB")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("85568bee-3498-43c2-9079-62c2edbbea06")]
+[assembly: Guid("6b9cd452-4f9e-4178-9dcd-e80cdb1bbd9e")]
 
 // Version information for an assembly consists of the following four values:
 //
