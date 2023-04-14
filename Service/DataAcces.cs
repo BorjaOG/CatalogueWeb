@@ -26,6 +26,11 @@ namespace Service
             comand.CommandType = System.Data.CommandType.Text;
             comand.CommandText = consulta;
         }
+        public void setearProcedimiento(string sp)
+        {
+            comand.CommandType = System.Data.CommandType.StoredProcedure;
+            comand.CommandText = sp;
+        }
         public void ejecutarLectura()
         {
             comand.Connection = conection;

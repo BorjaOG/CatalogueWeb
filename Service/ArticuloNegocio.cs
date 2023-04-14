@@ -62,6 +62,47 @@ namespace Catalogo
             }
 
         }
+        public List<Articulo> listarSP()
+        {
+            List<Articulo> lista = new List<Articulo>();
+            DataAcces data = new DataAcces();
+            try
+            {
+                // string consulta = "Select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, A.Precio, A.IdMarca, A.IdCategoria, M.Id, C.Id\r\nFrom ARTICULOS A, CATEGORIAS C, MARCAS M \r\nwhere C.Id = A.IdCategoria and M.id = A.IdMarca";               
+                // data.setearConsulta(consulta); //
+
+                data.setearProcedimiento("StoredListar");
+                data.ejecutarLectura();
+                while (data.Reader.Read())
+                {
+                    Articulo aux = new Articulo();
+                    if (!(data.Reader["Codigo"] is DBNull))
+                        aux.Codigo = (string)data.Reader["Codigo"];
+                    if (!(data.Reader["Nombre"] is DBNull))
+                        aux.Nombre = (string)data.Reader["Nombre"];
+                    if (!(data.Reader["Descripcion"] is DBNull))
+                        aux.Descripcion = (string)data.Reader["Descripcion"];
+                    if (!(data.Reader["ImagenUrl"] is DBNull))
+                        aux.UrlImagen = (string)data.Reader["ImagenUrl"];
+                    aux.Id = (int)data.Reader["Id"];
+                    aux.Precio = (decimal)data.Reader["Precio"];
+                    aux.Marca = new Marca();
+                    aux.Marca.Id = (int)data.Reader["IdMarca"];
+                    aux.Marca.Descripcion = (string)data.Reader["Marca"];
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Id = (int)data.Reader["IdCategoria"];
+                    aux.Categoria.Descripcion = (string)data.Reader["Categoria"];
+
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public void agregar(Articulo nuevo)
         {
             DataAcces data = new DataAcces();
