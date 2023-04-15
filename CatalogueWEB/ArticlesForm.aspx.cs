@@ -22,20 +22,18 @@ namespace CatalogueWEB
                 //Inital Config..//
                 if (!IsPostBack)
                 {
-                    CategoriaNegocio negocio = new CategoriaNegocio();
-                    List<Categoria> listaC = negocio.listar();
+                    CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+                    List<Categoria> listaCategorias = categoriaNegocio.listar();
 
-                    ddlCategoria.DataSource = listaC;
+                    ddlCategoria.DataSource = listaCategorias;
                     ddlCategoria.DataValueField = "Id";
                     ddlCategoria.DataTextField = "Descripcion";
                     ddlCategoria.DataBind();
-                }
-                if (!IsPostBack)
-                {
-                    MarcaNegocio negocio = new MarcaNegocio();
-                    List<Marca> listaC = negocio.listar();
 
-                    ddlMarca.DataSource = listaC;
+                    MarcaNegocio marcaNegocio = new MarcaNegocio();
+                    List<Marca> listaMarcas = marcaNegocio.listar();
+
+                    ddlMarca.DataSource = listaMarcas;
                     ddlMarca.DataValueField = "Id";
                     ddlMarca.DataTextField = "Descripcion";
                     ddlMarca.DataBind();
@@ -48,7 +46,7 @@ namespace CatalogueWEB
                    ArticuloNegocio negocio = new ArticuloNegocio();
                     //List<Articulo> lista = negocio.listar(Id);
                     //Articulo selected = lista[0];
-                   Articulo selected = (negocio.listar(Id))[0];
+                    Articulo selected = negocio.listar(Id).FirstOrDefault();
 
 
                     // datos precargados //
