@@ -10,10 +10,10 @@
         OnPageIndexChanging="dgvArticles_PageIndexChanging" 
         AllowPaging="true" PageSize="5">
         <Columns>
-            <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-            <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
-            <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />
-            <asp:BoundField HeaderText="Precio" DataField="Precio" />
+            <asp:BoundField HeaderText="Name" DataField="Nombre" />
+            <asp:BoundField HeaderText="Brand" DataField="Marca.Descripcion" />
+            <asp:BoundField HeaderText="Category" DataField="Categoria.Descripcion" />
+            <asp:BoundField HeaderText="Price" DataField="Precio" />
             <asp:CommandField HeaderText="Action" ShowSelectButton="true" SelectText="✍️" />
         </Columns>
     </asp:GridView>

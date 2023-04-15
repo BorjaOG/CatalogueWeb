@@ -18,7 +18,7 @@ namespace Service
         }
         public DataAcces()
         {
-            conection = new SqlConnection("server=DESKTOP-6NCI6TM\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true");
+            conection = new SqlConnection("server=DESKTOP-6NCI6TM\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true");
             comand = new SqlCommand();
         }
         public void setearConsulta(string consulta)

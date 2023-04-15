@@ -10,7 +10,7 @@
     bottom: 0;
     width: 100%;
     text-align: center; /* Centra el contenido del footer */
-    background-color: #181818; /* Agrega un color de fondo al footer para diferenciarlo del resto de la página */
+    background-color: #212121; /* Agrega un color de fondo al footer para diferenciarlo del resto de la página */
     margin-top: 15px;
 }
 .footer button {

@@ -108,7 +108,7 @@ namespace Catalogo
             DataAcces data = new DataAcces();
 
             try
-            {
+            {  
                 string consulta = "insert into ARTICULOS (Codigo, Nombre, Descripcion, ImagenUrl, Precio, IdMarca, IdCategoria)" +
                                   "values (@Codigo, @Nombre, @Descripcion, @UrlImagen, @Precio, @IdMarca, @IdCategoria)";
 
@@ -263,6 +263,33 @@ namespace Catalogo
                 throw ex;
             }
         }
+    public void AgregarSP(Articulo nuevo)
+    {
+        DataAcces data = new DataAcces();
+
+        try
+        {
+
+            data.setearProcedimiento("StoredNewArticle");
+            data.setearParametro("@Codigo", nuevo.Codigo);
+            data.setearParametro("@Nombre", nuevo.Nombre);
+            data.setearParametro("@Descripcion", nuevo.Descripcion);
+            data.setearParametro("@IdMarca", nuevo.Marca.Id);
+            data.setearParametro("@IdCategoria", nuevo.Categoria.Id);
+            data.setearParametro("@UrlImagen", nuevo.UrlImagen);
+            data.setearParametro("@Precio", nuevo.Precio);
+
+            data.ejecutarAccion();
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            data.cerrarConection();
+        }
     }
+  }
 }
 
