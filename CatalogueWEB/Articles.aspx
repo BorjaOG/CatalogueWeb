@@ -8,7 +8,7 @@
     <asp:GridView ID="dgvArticles" runat="server" DataKeyNames="Id" CssClass="table"
         AutoGenerateColumns="false" OnSelectedIndexChanged="dgvArticles_SelectedIndexChanged"
         OnPageIndexChanging="dgvArticles_PageIndexChanging" 
-        AllowPaging="true" PageSize="5">
+        AllowPaging="true" PageSize="10">
         <Columns>
             <asp:BoundField HeaderText="Name" DataField="Nombre" />
             <asp:BoundField HeaderText="Brand" DataField="Marca.Descripcion" />

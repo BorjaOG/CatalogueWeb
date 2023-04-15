@@ -15,7 +15,7 @@ namespace Catalogo
 {
     public class ArticuloNegocio
     {
-        public List<Articulo> listar()
+        public List<Articulo> listar( string id = "")
         {
             List<Articulo> lista = new List<Articulo>();
             SqlConnection conection = new SqlConnection();
@@ -26,8 +26,11 @@ namespace Catalogo
             {
                 conection.ConnectionString = "server=DESKTOP-6NCI6TM\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";
                 comand.CommandType = System.Data.CommandType.Text;
-                comand.CommandText = "Select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, A.Precio, A.IdMarca, A.IdCategoria, M.Id, C.Id\r\nFrom ARTICULOS A, CATEGORIAS C, MARCAS M \r\nwhere C.Id = A.IdCategoria and M.id = A.IdMarca";
+                comand.CommandText = "Select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, A.Precio, A.IdMarca, A.IdCategoria, M.Id, C.Id\r\nFrom ARTICULOS A, CATEGORIAS C, MARCAS M \r\nwhere C.Id = A.IdCategoria and M.id = A.IdMarca ";
+                if(id != "")
+                    comand.CommandText += " and A.Id = " + id;
                 comand.Connection = conection;
+
                 conection.Open();
                 reader = comand.ExecuteReader();
 
@@ -269,7 +272,6 @@ namespace Catalogo
 
         try
         {
-
             data.setearProcedimiento("StoredNewArticle");
             data.setearParametro("@Codigo", nuevo.Codigo);
             data.setearParametro("@Nombre", nuevo.Nombre);
@@ -290,6 +292,32 @@ namespace Catalogo
             data.cerrarConection();
         }
     }
-  }
+        public void modificarSP(Articulo article)
+        {
+            DataAcces data = new DataAcces();
+            try
+            {
+                data.setearProcedimiento("StoredModifyArticle");
+                data.setearParametro("@Codigo", article.Codigo);
+                data.setearParametro("@Nombre", article.Nombre);
+                data.setearParametro("@Descripcion", article.Descripcion);
+                data.setearParametro("@IdMarca", article.Marca.Id);
+                data.setearParametro("@IdCategoria", article.Categoria.Id);
+                data.setearParametro("@UrlImagen", article.UrlImagen);
+                data.setearParametro("@Precio", article.Precio);
+                data.setearParametro("@Id", article.Id);
+
+                data.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                data.cerrarConection();
+            }
+        }
+    }
 }
 

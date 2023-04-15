@@ -14,6 +14,7 @@ namespace CatalogueWEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             ArticuloNegocio negocio = new ArticuloNegocio();
             dgvArticles.DataSource = negocio.listarSP();
             dgvArticles.DataBind();
