@@ -14,9 +14,12 @@ namespace CatalogueWEB
 {
     public partial class ArticlesForm : System.Web.UI.Page
     {
+
+        public bool ConfirmaEliminacion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
+            ConfirmaEliminacion = false;
             try
             {
                 //Inital Config..//
@@ -106,6 +109,29 @@ namespace CatalogueWEB
             {
                 Session.Add("error", ex);
                 throw;
+            }
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            ConfirmaEliminacion = true;
+        }
+
+        protected void btnConfirmDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkConfirmDelete.Checked)
+                {
+                     ArticuloNegocio negocio = new ArticuloNegocio();
+                     negocio.delete(int.Parse(txtId.Text));
+                     Response.Redirect("Articles.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+
+               Session.Add("error", ex);
             }
         }
     }

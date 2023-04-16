@@ -1,9 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ArticlesForm.aspx.cs" Inherits="CatalogueWEB.ArticlesForm" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="Content/estilos.css" rel="stylesheet" />
-    <asp:ScriptManager runat="server" ID="ScriptManager1"/>
+    <asp:ScriptManager runat="server" ID="ScriptManager1" />
     <h1>Form</h1>
 
     <div class="row">
@@ -23,19 +24,34 @@
             <div class="mb-3">
                 <label for="txtMarca" class="form-label">Brand</label>
                 <asp:DropDownList ID="ddlMarca" runat="server" CssClass="form-select"></asp:DropDownList>
-            </div><div class="mb-3">
+            </div>
+            <div class="mb-3">
                 <label for="txtCategoria" class="form-label">Category</label>
                 <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select">
-                </asp:DropDownList>               
+                </asp:DropDownList>
             </div>
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Price</label>
                 <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
-            <div class="mb-3">
-                <asp:Button ID="btnAceptar" OnClick="btnAceptar_Click" runat="server" CssClass="btn btn-info" Text="Aceptar" />
-                <a href="Articles.aspx">Cancelar</a>
-            </div>
+
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
+                    <div class="button-container mb-3">
+                        <asp:Button ID="btnAceptar" OnClick="btnAceptar_Click" runat="server" CssClass="btn btn-info" Text="Aceptar" />
+                        <a class="btn btn-info" href="Articles.aspx">Back</a>
+                        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" CssClass="btn btn-danger" Text="Delete" />      
+                        <div class="mb-3" style="margin-top:10px ">
+                            <%if (ConfirmaEliminacion)
+                            {%>
+                            <asp:CheckBox Text="Confirm to delete" ID="chkConfirmDelete" runat="server"  />
+                            <asp:Button ID="btnConfirmDelete" runat="server" OnClick="btnConfirmDelete_Click" CssClass="btn btn-outline-danger ms-2" Text="Delete" />
+                            <% } %>
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
         </div>
         <div class="col-6">
             <div class="mb-3">
@@ -49,10 +65,10 @@
                         <asp:TextBox ID="txtUrlImagen" CssClass="form-control" runat="server"
                             AutoPostBack="true" OnTextChanged="txtUrlImagen_TextChanged"></asp:TextBox>
                     </div>
-                    <asp:Image ImageUrl="https://worldwellnessgroup.org.au/wp-content/uploads/2020/07/placeholder.png" 
+                    <asp:Image ImageUrl="https://worldwellnessgroup.org.au/wp-content/uploads/2020/07/placeholder.png"
                         runat="server" ID="imgArticle" Width="60%" />
                 </ContentTemplate>
-            </asp:UpdatePanel>                         
-            </div>
+            </asp:UpdatePanel>
         </div>
+    </div>
 </asp:Content>
