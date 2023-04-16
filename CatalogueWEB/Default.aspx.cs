@@ -24,5 +24,10 @@ namespace CatalogueWEB
             }
            
         }
+
+        protected void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
