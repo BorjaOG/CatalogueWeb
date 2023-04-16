@@ -223,13 +223,13 @@ namespace Catalogo
                         switch (criterio)
                         {
                             case "Start with":
-                                consulta += "A.Descripcion like '" + avanzado + "%'";
+                                consulta += "M.Descripcion like '" + avanzado + "%'";
                                 break;
                             case "End with":
-                                consulta += "A.Descripcion like '%" + avanzado + "'";
+                                consulta += "M.Descripcion like '%" + avanzado + "'";
                                 break;
                             default:
-                                consulta += "A.Descripcion like '%" + avanzado + "%'";
+                                consulta += "M.Descripcion like '%" + avanzado + "%'";
                                 break;
                         }
                         break;

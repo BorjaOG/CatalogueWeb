@@ -8,7 +8,7 @@
     <h1>Home</h1>
     <div class="col-6">
     <h4 style="margin-bottom:40px">Welcome to the Catalogue</h4>
-    <asp:Label ID="lblFilter" runat="server" Text="Search by Name"></asp:Label>
+    <asp:Label ID="lblFilter" runat="server" Text="Search by Name:"></asp:Label>
     <asp:TextBox style="margin-bottom:20px" CssClass="form-control" ID="txtFilter" runat="server" AutoPostBack="true" OnTextChanged="txtFilter_TextChanged"></asp:TextBox>
     </div>
     <div class="row row-cols-1 row-cols-md-3 g-4">       

@@ -17,6 +17,45 @@
         margin: 4px auto; /* Agrega un margen de 10px en la parte superior e inferior y centrado horizontalmente */
         padding: 5px 10px; /* Agrega un margen de 5px en la parte superior e inferior y 10px en los lados derecho e izquierdo */
     }
+/* Estilo personalizado para el control DropDownList */
+/* Estilo personalizado para el control DropDownList */
+.custom-dropdown {
+    padding: 8px 12px;
+    border: 1px solid #17a2b8;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000000;
+    font-size: 16px;
+    width: 200px;
+}
+
+    /* Estilo personalizado para los elementos de la lista desplegable */
+    .custom-dropdown option {
+        background-color: #fff;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+    }
+
+    /* Estilo personalizado para el hover del control DropDownList */
+    .custom-dropdown:hover {
+        border-color: #000000;
+    }
+
+    /* Estilo personalizado para el dropdown expandido */
+    .custom-dropdown:focus::-ms-value {
+        background-color: #fff;
+        color: #fff;
+    }
+
+    .custom-dropdown:focus {
+        scrollbar-color: #17a2b8 white;
+    }        
+        .custom-dropdown:focus option {
+            background-color: #fff;
+            color: #000000;
+        }
+
 
 
 

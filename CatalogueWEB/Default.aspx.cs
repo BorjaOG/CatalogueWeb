@@ -21,13 +21,16 @@ namespace CatalogueWEB
             {
               RepeaterArticles.DataSource = ListaArticulos;
               RepeaterArticles.DataBind();
-            }
-           
+            }          
         }
 
         protected void txtFilter_TextChanged(object sender, EventArgs e)
         {
-
+            string searchValue = txtFilter.Text.ToLower();
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            ListaArticulos = negocio.listarSP().Where(x => x.Nombre.ToLower().Contains(searchValue)).ToList();
+            RepeaterArticles.DataSource = ListaArticulos;
+            RepeaterArticles.DataBind();
         }
     }
 }
