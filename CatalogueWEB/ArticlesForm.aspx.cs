@@ -9,58 +9,59 @@ using Domain;
 using Service;
 
 
+
 namespace CatalogueWEB
 {
     public partial class ArticlesForm : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtId.Enabled = false;
             try
             {
-                txtId.Enabled = false;
-
                 //Inital Config..//
                 if (!IsPostBack)
                 {
+                    MarcaNegocio marcaNegocio = new MarcaNegocio();
+                    List<Marca> listaMarcas = marcaNegocio.listar();
+
                     CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
                     List<Categoria> listaCategorias = categoriaNegocio.listar();
+
+                    ddlMarca.DataSource = listaMarcas;
+                    ddlMarca.DataValueField = "Id";
+                    ddlMarca.DataTextField = "Descripcion";
+                    ddlMarca.DataBind();
 
                     ddlCategoria.DataSource = listaCategorias;
                     ddlCategoria.DataValueField = "Id";
                     ddlCategoria.DataTextField = "Descripcion";
                     ddlCategoria.DataBind();
 
-                    MarcaNegocio marcaNegocio = new MarcaNegocio();
-                    List<Marca> listaMarcas = marcaNegocio.listar();
 
-                    ddlMarca.DataSource = listaMarcas;
-                    ddlMarca.DataValueField = "Id";
-                    ddlMarca.DataTextField = "Descripcion";
-                    ddlMarca.DataBind();
                 }
 
                 //Modification Config..//
                 string Id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
                 if (Id != "" && !IsPostBack)
                 {
-                   ArticuloNegocio negocio = new ArticuloNegocio();
+                    ArticuloNegocio negocio = new ArticuloNegocio();
                     //List<Articulo> lista = negocio.listar(Id);
                     //Articulo selected = lista[0];
-                    Articulo selected = negocio.listar(Id).FirstOrDefault();
-
-
+                    Articulo selected = (negocio.listar(Id))[0];
+                    
                     // datos precargados //
-                    txtId.Text = Id;
-                    txtNombre.Text = selected.Nombre;
-                    txtCodigo.Text = selected.Codigo;
-                    txtDescripcion.Text = selected.Descripcion;
-                    txtUrlImagen.Text = selected.UrlImagen;
-                    txtPrecio.Text = selected.Precio.ToString();
+                        txtId.Text = Id;
+                        txtNombre.Text = selected.Nombre;
+                        txtCodigo.Text = selected.Codigo;
+                        txtDescripcion.Text = selected.Descripcion;
+                        txtUrlImagen.Text = selected.UrlImagen;
+                        txtPrecio.Text = selected.Precio.ToString();
 
-                    ddlCategoria.SelectedValue = selected.Categoria.Id.ToString();
-                    ddlMarca.SelectedValue = selected.Marca.Id.ToString();
-                    txtUrlImagen_TextChanged(sender, e);
-                }
+                        ddlCategoria.SelectedValue = selected.Categoria.Id.ToString();
+                        ddlMarca.SelectedValue = selected.Marca.Id.ToString();
+                        txtUrlImagen_TextChanged(sender, e);
+                    }               
             }
             catch (Exception ex)
             {
