@@ -8,6 +8,8 @@ using Catalogo;
 using Domain;
 
 
+
+
 namespace CatalogueWEB
 {
 
@@ -64,11 +66,23 @@ namespace CatalogueWEB
         {
             try
             {
+                if (ddField.SelectedItem.ToString() == "" && string.IsNullOrEmpty(txtFiltroAvanzado.Text))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please select a field');", true);
+                    return;
+                }
+
+                if (ddField.SelectedItem.ToString() == "Price" && string.IsNullOrEmpty(txtFiltroAvanzado.Text))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please enter a price');", true);
+                    return;
+                }
+
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 dgvArticles.DataSource = negocio.filtrar(
                 ddField.SelectedItem.ToString(),
                 ddCriteria.SelectedItem.ToString(),
-                txtFiltroAvanzado.ToString());
+                txtFiltroAvanzado.Text);
                 dgvArticles.DataBind();
             }
             catch (Exception ex)

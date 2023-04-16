@@ -179,60 +179,58 @@ namespace Catalogo
 
         //Filter advanced//
 
-        public List<Articulo> filtrar(string campo, string criterio, string avanzado)
+        public List<Articulo> filtrar(string field, string criteria, string filter)
         {
             List<Articulo> lista = new List<Articulo>();
             DataAcces data = new DataAcces();
             try
             {
-                string consulta = "Select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, A.Precio, A.IdMarca, A.IdCategoria, M.Id, C.Id\r\nFrom ARTICULOS A, CATEGORIAS C, MARCAS M \r\nwhere C.Id = A.IdCategoria and M.id = A.IdMarca and ";
+                string consulta = "Select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, A.Precio, A.IdMarca, A.IdCategoria, M.Id, C.Id\r\nFrom ARTICULOS A, CATEGORIAS C, MARCAS M \r\nwhere C.Id = A.IdCategoria and M.id = A.IdMarca and ";
 
-                switch (campo)
+                if (field == "Name")
                 {
-                    case "Price":
-                        switch (criterio)
-                        {
-                            case "Higher of":
-                                consulta += "Precio > " + avanzado;
-                                break;
-                            case "Lower of":
-                                consulta += "Precio < " + avanzado;
-                                break;
-                            default:
-                                consulta += "Precio = " + avanzado;
-                                break;
-                        }
-                        break;
-
-                    case "Name":
-                        switch (criterio)
-                        {
-                            case "Start with":
-                                consulta += "Nombre like '" + avanzado + "%'";
-                                break;
-                            case "End with":
-                                consulta += "Nombre like '%" + avanzado + "'";
-                                break;
-                            default:
-                                consulta += "Nombre like '%" + avanzado + "%'";
-                                break;
-                        }
-                        break;
-
-                    default:
-                        switch (criterio)
-                        {
-                            case "Start with":
-                                consulta += "M.Descripcion like '" + avanzado + "%'";
-                                break;
-                            case "End with":
-                                consulta += "M.Descripcion like '%" + avanzado + "'";
-                                break;
-                            default:
-                                consulta += "M.Descripcion like '%" + avanzado + "%'";
-                                break;
-                        }
-                        break;
+                    switch (criteria)
+                    {
+                        case "Start with":
+                            consulta += "A.Nombre like '" + filter + "%' ";
+                            break;
+                        case "Ends with":
+                            consulta += "A.Nombre like '%" + filter + "'";
+                            break;
+                        default:
+                            consulta += "A.Nombre like '%" + filter + "%'";
+                            break;
+                    }
+                }
+                else if (field == "Brand")
+                {
+                    switch (criteria)
+                    {
+                        case "Start with":
+                            consulta += "M.Descripcion like '" + filter + "%' ";
+                            break;
+                        case "Ends with":
+                            consulta += "M.Descripcion like '%" + filter + "'";
+                            break;
+                        default:
+                            consulta += "M.Descripcion like '%" + filter + "%'";
+                            break;
+                    }
+                }
+                else if (field == "Price")
+                {
+                    switch (criteria)
+                    {
+                        case "More than":
+                            consulta += "A.Precio > " + filter;
+                            break;
+                        case "Less than":
+                            consulta += "A.Precio < " + filter;
+                            break;
+                        default:
+                            consulta += "A.Precio = " + filter;
+                            break;
+                    }
                 }
                 data.setearConsulta(consulta);
                 data.ejecutarLectura();
@@ -262,6 +260,7 @@ namespace Catalogo
             }
             catch (Exception ex)
             {
+
                 throw ex;
             }
         }
