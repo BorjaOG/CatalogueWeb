@@ -18,6 +18,7 @@
             <div class="mb-3">
                 <asp:Label ID="ddlCampo" runat="server" Text="Field"></asp:Label>
                 <asp:DropDownList ID="ddField" AutoPostBack="true" CssClass="custom-dropdown" runat="server" OnSelectedIndexChanged="ddField_SelectedIndexChanged">
+                    <asp:ListItem Text="" />
                     <asp:ListItem Text="Name" />
                     <asp:ListItem Text="Brand" />
                     <asp:ListItem Text="Price" />
@@ -35,9 +36,7 @@
     <div class="col-2">
         <div class="mb-3">
             <asp:Label  ID="Label2" runat="server" Text="Filter"></asp:Label>
-            <asp:DropDownList  ID="ddFilter" CssClass="custom-dropdown" runat="server">
-               
-            </asp:DropDownList>
+            <asp:TextBox CssClass="custom-dropdown" ID="txtFiltroAvanzado" runat="server"></asp:TextBox>           
         </div>
       </div>
     </div>

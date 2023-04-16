@@ -10,18 +10,18 @@ using Domain;
 
 namespace CatalogueWEB
 {
-    
+
     public partial class Articles : System.Web.UI.Page
-    { 
+    {
         public bool FiltroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             FiltroAvanzado = chkAvanzado.Checked;
             if (!IsPostBack)
             {
-                 ArticuloNegocio negocio = new ArticuloNegocio();
-                 dgvArticles.DataSource = negocio.listarSP();
-                 dgvArticles.DataBind();
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                dgvArticles.DataSource = negocio.listarSP();
+                dgvArticles.DataBind();
             }
         }
 
@@ -39,8 +39,8 @@ namespace CatalogueWEB
 
         protected void chkAvanzado_CheckedChanged(object sender, EventArgs e)
         {
-            FiltroAvanzado = chkAvanzado.Checked;   
-            
+            FiltroAvanzado = chkAvanzado.Checked;
+
         }
 
         protected void ddField_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,8 +65,11 @@ namespace CatalogueWEB
             try
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
-                dgvArticles.DataSource = negocio.filtrar(ddField.SelectedItem.ToString(),
-                ddCriteria.SelectedItem.ToString()); 
+                dgvArticles.DataSource = negocio.filtrar(
+                ddField.SelectedItem.ToString(),
+                ddCriteria.SelectedItem.ToString(),
+                txtFiltroAvanzado.ToString());
+                dgvArticles.DataBind();
             }
             catch (Exception ex)
             {

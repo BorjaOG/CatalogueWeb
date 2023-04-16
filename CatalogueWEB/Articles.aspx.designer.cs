@@ -69,13 +69,13 @@ namespace CatalogueWEB
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// ddFilter control.
+        /// txtFiltroAvanzado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddFilter;
+        protected global::System.Web.UI.WebControls.TextBox txtFiltroAvanzado;
 
         /// <summary>
         /// btnSearch control.
