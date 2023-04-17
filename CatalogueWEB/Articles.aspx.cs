@@ -14,7 +14,7 @@ namespace CatalogueWEB
 {
 
     public partial class Articles : System.Web.UI.Page
-    {
+    {      
         public bool FiltroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -90,6 +90,12 @@ namespace CatalogueWEB
                 Session.Add("error", ex);
                 throw;
             }
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ArticlesForm.aspx?mode=add");
+            
         }
     }
 }

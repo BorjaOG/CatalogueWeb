@@ -34,11 +34,10 @@
                 <label for="txtPrecio" class="form-label">Price</label>
                 <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
-
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
                     <div class="button-container mb-3">
-                        <asp:Button ID="btnAceptar" OnClick="btnAceptar_Click" runat="server" CssClass="btn btn-info" Text="Aceptar" />
+                        <asp:Button ID="btnAceptar" OnClick="btnAceptar_Click" runat="server" CssClass="btn btn-info" Text="Save" />
                         <a class="btn btn-info" href="Articles.aspx">Back</a>
                         <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" CssClass="btn btn-danger" Text="Delete" />      
                         <div class="mb-3" style="margin-top:10px ">
@@ -51,7 +50,6 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-
         </div>
         <div class="col-6">
             <div class="mb-3">

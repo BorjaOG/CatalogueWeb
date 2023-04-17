@@ -61,6 +61,7 @@
             <asp:CommandField HeaderText="Action" ShowSelectButton="true" SelectText="✍️" />
         </Columns>
     </asp:GridView>
-    <a href="ArticlesForm.aspx" class="btn btn-info">Add Article</a>
+    <asp:Button ID="btnAdd" class="btn btn-info" runat="server" Onclick="btnAdd_Click" Text="Add Article" />
+    
 </asp:Content>
 

@@ -30,7 +30,19 @@
                                 <a class="nav-link" href="Articles.aspx">Articles</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Favorites</a>
+                                <a class="nav-link" href="Favorites.aspx">Favorites</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="Profile.aspx">Profile</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="btn btn-outline-info" style="margin-right: 5px" href="SignIn.aspx">Sign In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-info" style="margin-left: 5px" href="LogIn.aspx">Log In</a>
+                                <img src="user_image.jpg" class="nav-user-image" />
                             </li>
                         </ul>
                     </div>

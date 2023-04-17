@@ -44,7 +44,22 @@ namespace Service
                 throw ex;
             }   
         }
-        public void ejecutarAccion()
+
+        public int ejecutarAccionScalar()
+        {
+            comand.Connection = conection;
+            try
+            {
+                conection.Open();
+                return int.Parse(comand.ExecuteScalar().ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+            public void ejecutarAccion()
         {
                 comand.Connection = conection;
             try

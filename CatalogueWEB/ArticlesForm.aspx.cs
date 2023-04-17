@@ -17,6 +17,10 @@ namespace CatalogueWEB
        public bool ConfirmaEliminacion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["mode"] == "add")
+            {
+                btnDelete.Visible = false;
+            }
             txtId.Enabled = false;
             ConfirmaEliminacion = false;
             try
