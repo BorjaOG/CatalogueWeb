@@ -35,9 +35,9 @@ namespace Service
 		DataAcces data = new DataAcces();
 		try
 		{
-			data.setearConsulta("Select Id, email, pass, admin from user where email = @email and pass = @pass");
+			data.setearConsulta("Select Id, email, pass, admin from users where email = @email and pass = @pass");
 			data.setearParametro("@email", user.Email);
-            data.setearParametro("pass", user.Pass);
+            data.setearParametro("@pass", user.Pass);
 			data.ejecutarLectura();
 			if (data.Reader.Read())
 			{

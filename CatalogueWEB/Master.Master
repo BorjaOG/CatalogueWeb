@@ -38,10 +38,13 @@
                         </ul>
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <a class="btn btn-outline-info" style="margin-right: 5px" href="SignIn.aspx">Sign In</a>
+                                <asp:Button class="btn btn-outline-info" style="margin-right: 5px" 
+                                   Onclick="btnSignIn_Click" ID="btnSignIn" runat="server" Text="Sign In" />                         
                             </li>
                             <li class="nav-item">
-                                <a class="btn btn-outline-info" style="margin-left: 5px" href="LogIn.aspx">Log In</a>
+                                <asp:Button class="btn btn-outline-info" style="margin-left: 5px" 
+                                   Onclick="btnLogIn_Click" ID="btnLogIn" runat="server" Text="Log In" />                               
+                                <asp:Button ID="btnLogout" runat="server" Text="Log Out" Onclick="btnLogout_Click" Visible="false" CssClass="btn btn-outline-info" />
                                 <img src="user_image.jpg" class="nav-user-image" />
                             </li>
                         </ul>

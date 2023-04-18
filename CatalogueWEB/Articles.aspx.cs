@@ -6,9 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Catalogo;
 using Domain;
-
-
-
+using Service;
 
 namespace CatalogueWEB
 {
@@ -18,6 +16,12 @@ namespace CatalogueWEB
         public bool FiltroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Security.IsAdmin(Session["user"]))
+            {
+                Session.Add("error", "You must be an Admin to access");
+                Response.Redirect("Error.aspx");
+            }
+
             FiltroAvanzado = chkAvanzado.Checked;
             if (!IsPostBack)
             {
