@@ -20,7 +20,7 @@ namespace Domain
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string UrlImagenPerfil { get; set; }
-        public TipoUsuario TipoUsuario { get; set; }
+        public bool Admin { get; set; }
 
        // public User(string email, string pass, string nombre, string apellido, string imagen, bool admin)
        // {

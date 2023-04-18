@@ -18,12 +18,10 @@ namespace Service
 				data.setearProcedimiento("InsertNew");
 				data.setearParametro("@email", nuevo.Email);
 				data.setearParametro("@pass", nuevo.Pass);
-				return data.ejecutarAccionScalar();
-				
+				return data.ejecutarAccionScalar();				
 			}
 			catch (Exception ex)
 			{
-
 				throw ex;
 			}
 
@@ -32,23 +30,35 @@ namespace Service
 				data.cerrarConection();
 			}
 		}
-       // public bool LogIn(User user)
-       // {
+	public bool logIn (User user)
+	{
+		DataAcces data = new DataAcces();
+		try
+		{
+			data.setearConsulta("Select Id, email, pass, admin from user where email = @email and pass = @pass");
+			data.setearParametro("@email", user.Email);
+            data.setearParametro("pass", user.Pass);
+			data.ejecutarLectura();
+			if (data.Reader.Read())
+			{
+				user.Id = (int)data.Reader["Id"];
+				user.Admin = (bool)data.Reader["admin"];
+				return true;
 
-		//	DataAcces data = new DataAcces();
-		//	try
-			//{
-			//	data.setearConsulta("Select Id, email, pass, nombre, apellido, urlImagenPerfil, admin from Users where email = @email and pass = @ pass");
-			//	data.setearParametro("@email", user.Email);
-			//	data.setearParametro("@pass", user.Pass);
+			}
+			return false;
+        }
+		catch (Exception ex)
+		{
 
-			//	data.ejecutarLectura();
+			throw ex ;
+		}
+			finally
+			{
+				data.cerrarConection();
+			}
+	}
+       
+  }
 
-			//}
-			//catch (Exception ex)
-			//{
-			//	throw ex;
-			//}
-       // }
-    }
 }

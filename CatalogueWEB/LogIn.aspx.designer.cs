@@ -15,22 +15,22 @@ namespace CatalogueWEB
     {
 
         /// <summary>
-        /// txtEmail control.
+        /// txtEmailLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtEmailLogin;
 
         /// <summary>
-        /// txtPass control.
+        /// txtPassLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPass;
+        protected global::System.Web.UI.WebControls.TextBox txtPassLogin;
 
         /// <summary>
         /// btnlogIn control.

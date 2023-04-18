@@ -72,6 +72,7 @@
     <Content Include="Content\estilos.css" />
     <Content Include="Default.aspx" />
     <Content Include="Details.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="Favorites.aspx" />
     <Content Include="LogIn.aspx" />
     <Content Include="Profile.aspx" />
@@ -107,6 +108,13 @@
     </Compile>
     <Compile Include="Details.aspx.designer.cs">
       <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Favorites.aspx.cs">
       <DependentUpon>Favorites.aspx</DependentUpon>
