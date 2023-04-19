@@ -31,6 +31,7 @@
 
     /* Estilo personalizado para los elementos de la lista desplegable */
     .custom-dropdown option {
+        
         background-color: #fff;
         color: #fff;
         font-size: 16px;
@@ -55,6 +56,12 @@
             background-color: #fff;
             color: #000000;
         }
+@media screen and (max-width: 576px) {
+    .col-2 {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
 
 
 

@@ -24,9 +24,11 @@ namespace CatalogueWEB
                 User user = new User(); 
                 UsuarioNegocio userNegocio = new UsuarioNegocio();
                 EmailService emailService = new EmailService();
+
                 user.Email = txtEmail.Text;
                 user.Pass = txtPass.Text;
-                int id = userNegocio.InsertarNuevo(user);
+                user.Id = userNegocio.InsertarNuevo(user);
+                Session.Add("user", user);
 
                 emailService.armarCorreo(user.Email, "Welcome user", "Hey there, Welcome to the articles page! Thank you for signing in.");
                 emailService.enviarEmail();

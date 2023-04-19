@@ -18,6 +18,14 @@ namespace CatalogueWEB
                 if (!Security.ActiveSession(Session["user"]))
                      Response.Redirect("Login.aspx", false);
             }
+            if ((Session["user"] != null && !Security.ActiveSession(Session["user"])))
+            {
+                
+                imgAvatar.ImageUrl = "~/Images/" + ((User)Session["user"]).UrlImagenPerfil; 
+            }            
+            else
+                imgAvatar.ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
+
             if (Security.ActiveSession(Session["user"]))
             {
                 btnLogout.Visible = true;
@@ -25,18 +33,16 @@ namespace CatalogueWEB
                 btnSignIn.Visible = false;
             }
         }
-
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session["user"] = null;
             Response.Redirect("Login.aspx", false);
         }
-
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
+            Session.Clear();
             Response.Redirect("SignIn.aspx");
         }
-
         protected void btnLogIn_Click(object sender, EventArgs e)
         {
             Response.Redirect("LogIn.aspx");
