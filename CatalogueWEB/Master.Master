@@ -36,16 +36,17 @@
                                 <a class="nav-link " aria-current="page" href="Profile.aspx">Profile</a>
                             </li>
                         </ul>
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
+                        <ul style="margin-top:10px" class="navbar-nav ms-auto">
+                            <li class="button-container mb-3">
                                 <asp:Button class="btn btn-outline-info" style="margin-right: 5px" 
                                    Onclick="btnSignIn_Click" ID="btnSignIn" runat="server" Text="Sign In" />                         
                             </li>
                             <li class="nav-item">
-                                <asp:Button class="btn btn-outline-info" style="margin-left: 5px" 
+                                <asp:Button  class="btn btn-outline-info" 
                                    Onclick="btnLogIn_Click" ID="btnLogIn" runat="server" Text="Log In" />                               
                                 <asp:Button ID="btnLogout" runat="server" Text="Log Out" Onclick="btnLogout_Click" Visible="false" CssClass="btn btn-outline-info" />
-                                <img src="user_image.jpg" class="nav-user-image" />
+                                <asp:Image ID= "imgAvatar" style="height:40px; width:40px; border-radius:50%"       
+                                   class="nav-user-image" runat="server" />
                             </li>
                         </ul>
                     </div>

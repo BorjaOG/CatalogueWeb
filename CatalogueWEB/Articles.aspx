@@ -4,7 +4,7 @@
     <link href="Content/estilos.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1 style="margin-bottom: 20px">Articles</h1>
+    <h1 style="margin-bottom: 2%">Articles</h1>
 
     <div class="clo-6" style="display: flex; flex-direction: column; justify-content: flex-end">
         <div class="mb-3">
@@ -17,7 +17,7 @@
         <div class="col-2">
             <div class="mb-3">
                 <asp:Label ID="ddlCampo" runat="server" Text="Field"></asp:Label>
-                <asp:DropDownList ID="ddField" AutoPostBack="true" CssClass="custom-dropdown" runat="server" OnSelectedIndexChanged="ddField_SelectedIndexChanged">
+                <asp:DropDownList style="width:100%" ID="ddField" AutoPostBack="true" CssClass="custom-dropdown" runat="server" OnSelectedIndexChanged="ddField_SelectedIndexChanged">
                     <asp:ListItem Text="" />
                     <asp:ListItem Text="Name" />
                     <asp:ListItem Text="Brand" />
@@ -28,7 +28,7 @@
     <div class="col-2">
         <div class="mb-3">
             <asp:Label  ID="Label1" runat="server" Text="Criteria"></asp:Label>
-            <asp:DropDownList  ID="ddCriteria" CssClass="custom-dropdown" runat="server">
+            <asp:DropDownList style="width:100%" ID="ddCriteria" CssClass="custom-dropdown" runat="server">
                 
             </asp:DropDownList>
         </div>
@@ -36,7 +36,7 @@
     <div class="col-2">
         <div class="mb-3">
             <asp:Label  ID="Label2" runat="server" Text="Filter"></asp:Label>
-            <asp:TextBox CssClass="custom-dropdown" ID="txtFiltroAvanzado" runat="server"></asp:TextBox>           
+            <asp:TextBox style="width:100%" CssClass="custom-dropdown" ID="txtFiltroAvanzado" runat="server"></asp:TextBox>           
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
     </div>    
     <% }%>
 
-    <asp:GridView Style="margin-top: 25px" ID="dgvArticles" runat="server" DataKeyNames="Id" CssClass="table"
+    <asp:GridView Style="margin-top: 2%" ID="dgvArticles" runat="server" DataKeyNames="Id" CssClass="table"
         AutoGenerateColumns="false" OnSelectedIndexChanged="dgvArticles_SelectedIndexChanged"
         OnPageIndexChanging="dgvArticles_PageIndexChanging"
         AllowPaging="true" PageSize="10">
