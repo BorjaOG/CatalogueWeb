@@ -37,20 +37,38 @@ namespace Service
             }
         }
 
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public int InsertarNuevo(User nuevo)
 		{
 			DataAcces data = new DataAcces();
 			try
 			{
-				data.setearProcedimiento("InsertNew");
+                if (!IsValidEmail(nuevo.Email))
+                {
+                    throw new ArgumentException("Correo electrónico inválido.");
+                }
+                data.setearProcedimiento("InsertNew");
 				data.setearParametro("@email", nuevo.Email);
 				data.setearParametro("@pass", nuevo.Pass);
 				return data.ejecutarAccionScalar();				
 			}
 			catch (Exception ex)
 			{
-				throw ex;
-			}
+                throw new Exception("Error al insertar nuevo usuario: " + ex.Message);
+            }
+        
 
 			finally
 			{
@@ -65,7 +83,6 @@ namespace Service
 			data.setearConsulta("Select Id, email, pass, admin,urlImagenPerfil from users where email = @email and pass = @pass");
 			data.setearParametro("@email", user.Email);
             data.setearParametro("@pass", user.Pass);
-			data.setearParametro("@urlImagenPerfil", user.UrlImagenPerfil);
 			data.ejecutarLectura();
 			if (data.Reader.Read())
 			{
