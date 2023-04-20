@@ -25,12 +25,17 @@ namespace CatalogueWEB
                     user = negocio.obtenerPorId(user.Id);
                     txtName.Text = user.Nombre;
                     TxtSurname.Text = user.Apellido;
-                    if (user.UrlImagenPerfil != null)
+                    if (string.IsNullOrEmpty(user.UrlImagenPerfil))
+                    {
+                        ImgPerfil.ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
+                    }
+                    else
                     {
                         ImgPerfil.ImageUrl = "~/Images/" + user.UrlImagenPerfil;
                     }
                 }
             }
+            
             else
             {
                 User user = (User)Session["user"];
@@ -65,10 +70,11 @@ namespace CatalogueWEB
 
                     // actualizar imagen del avatar
                     Image img = (Image)Master.FindControl("imgAvatar");
-                    img.ImageUrl = "~/Images/" + user.UrlImagenPerfil + "?v=" + Guid.NewGuid().ToString();
+                    img.ImageUrl = "~/Images/" + user.UrlImagenPerfil + "?v=" + DateTime.Now.Ticks.ToString();
+                    ;
 
                     // actualizar imagen del perfil
-                    ImgPerfil.ImageUrl = "~/Images/" + user.UrlImagenPerfil + "?v=" + Guid.NewGuid().ToString();
+                    ImgPerfil.ImageUrl = "~/Images/" + user.UrlImagenPerfil + "?v=" + DateTime.Now.Ticks.ToString();
 
                     Debug.WriteLine("Imagen guardada en: " + filePath);
                 }

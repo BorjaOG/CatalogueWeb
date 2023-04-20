@@ -1,9 +1,27 @@
+.my-textbox {
+    border: 1px solid #17a2b8; /* Cambiar "red" por el color deseado */
+}
 .card-img-top {
     height: 300px;
     object-fit: cover;
     object-position: center;
     width: 100%;
 }
+.card-body {
+    margin-bottom: 1rem;
+    margin-bottom: 0;   
+}
+.card {
+    border: 1px solid black;
+}
+
+
+@media screen and (max-width: 576px) {
+    .card {
+        height: auto;
+    }
+}
+
 .footer {
     position: relative;
     left: 0;
@@ -20,18 +38,17 @@
 /* Estilo personalizado para el control DropDownList */
 /* Estilo personalizado para el control DropDownList */
 .custom-dropdown {
-    padding: 8px 12px;
+    padding: 10px 14px;
     border: 1px solid #17a2b8;
     border-radius: 5px;
     background-color: #fff;
     color: #000000;
     font-size: 16px;
-    width: 200px;
+    width: 100%;
 }
 
     /* Estilo personalizado para los elementos de la lista desplegable */
     .custom-dropdown option {
-        
         background-color: #fff;
         color: #fff;
         font-size: 16px;
@@ -56,12 +73,50 @@
             background-color: #fff;
             color: #000000;
         }
-@media screen and (max-width: 576px) {
-    .col-2 {
-        width: 100%;
-        margin-bottom: 15px;
+@media (max-width: 480px) {
+    /* Estilos personalizados para dispositivos móviles */
+    .custom-dropdown option {
+        font-size: 14px;
+    }
+
+    #ddField {
+        font-size: 14px;
+    }
+
+    #ddCriteria {
+        font-size: 14px;
     }
 }
+
+
+.btn-favorite {
+    background-color: white;
+}
+.btn-favorite {
+    position: absolute;
+    bottom: 4%;
+    right: 5.5%;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (min-width: 576px) {
+    .profile-form {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+        .profile-form .col-4 {
+            max-width: 400px;
+        }
+}
+
+
+
 
 
 
