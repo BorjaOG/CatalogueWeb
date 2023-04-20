@@ -28,12 +28,11 @@
     bottom: 0;
     width: 100%;
     text-align: center; /* Centra el contenido del footer */
-    background-color: #212121; /* Agrega un color de fondo al footer para diferenciarlo del resto de la página */
-    margin-top: 15px;
+    background-color: #212121; 
 }
 .footer button {
-        margin: 4px auto; /* Agrega un margen de 10px en la parte superior e inferior y centrado horizontalmente */
-        padding: 5px 10px; /* Agrega un margen de 5px en la parte superior e inferior y 10px en los lados derecho e izquierdo */
+        margin: 4px auto; 
+        padding: 5px 10px; 
     }
 /* Estilo personalizado para el control DropDownList */
 /* Estilo personalizado para el control DropDownList */
