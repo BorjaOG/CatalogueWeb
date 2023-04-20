@@ -1,18 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="CatalogueWEB.Profile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">    
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server"> 
+    
     <h1 style= margin-bottom:40px>Profile</h1>
     <div class="row">
         <div class="col-4">           
             <div style= "margin-top:22px" class="mb-3">
                 <label class="form-label">Email address</label>
-                <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <asp:TextBox ReadOnly="true" ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>              
             </div>
             <div style= "margin-top:30px" class="mb-3">
                 <label class="form-label">Name</label>
-                <asp:TextBox  ID="txtName" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox   ID="txtName" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
              <div style= "margin-top:30px" class="mb-3">
                 <label class="form-label">Surname</label>
@@ -21,7 +21,7 @@
             <div style= "margin-top:6%">
             <asp:Button style= "margin-top:4%" runat="server" type="submit" ID="btnSaveProfile" Onclick="btnSaveProfile_Click" class="btn btn-info" Text="Save" />          
             <a style= "margin-top:4%" class="btn btn-info" href="Default.aspx">Back</a>
-        </div>
+        </div>            
       </div>         
         <div class="col-4"> 
             <div class="mb-3">

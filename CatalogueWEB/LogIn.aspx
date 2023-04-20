@@ -12,7 +12,7 @@
             </div>
             <div style= "margin-top:20px" class="mb-3">
                 <label class="form-label">Password</label>
-                <asp:TextBox TextMode="password" ID="txtPassLogin" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox placeholder="******" TextMode="password" ID="txtPassLogin" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
             <asp:Button style= "margin-top:10px" runat="server" type="submit" ID="btnlogIn" Onclick="btnlogIn_Click" class="btn btn-info" Text="Log In" />          
             <a style= "margin-top:10px" class="btn btn-info" href="Default.aspx">Back</a>

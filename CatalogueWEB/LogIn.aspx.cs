@@ -11,6 +11,7 @@ namespace CatalogueWEB
 {
     public partial class LogIn : System.Web.UI.Page
     {
+        public bool IsAdmin { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,6 +21,8 @@ namespace CatalogueWEB
         {
                 User user = new User();
                 UsuarioNegocio negocio = new UsuarioNegocio();
+
+
             try
             {
                 user.Email = txtEmailLogin.Text;

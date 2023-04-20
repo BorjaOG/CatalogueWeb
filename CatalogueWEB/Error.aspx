@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>An error has ocurred</h1>
+    <h1>Error</h1>
+    <p>An error has occurred:</p>
+    
     <asp:Label ID="lblError" runat="server" Text="Label"></asp:Label>
 </asp:Content>

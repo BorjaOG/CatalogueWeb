@@ -13,7 +13,7 @@ namespace CatalogueWEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!(Page is LogIn || Page is SignIn || Page is Default))
+            if (!(Page is LogIn || Page is SignIn || Page is Default || Page is ContactUs))
             {
                 if (!Security.ActiveSession(Session["user"]))
                     Response.Redirect("Login.aspx", false);
@@ -33,6 +33,8 @@ namespace CatalogueWEB
                 btnLogIn.Visible = false;
                 btnSignIn.Visible = false;
             }
+
+
             else
             {
                 imgAvatar.ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
@@ -54,6 +56,11 @@ namespace CatalogueWEB
         protected void btnLogIn_Click(object sender, EventArgs e)
         {
             Response.Redirect("LogIn.aspx");
+        }
+
+        protected void btnContact_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ContactUS.aspx", false);
         }
     }
 }
