@@ -18,7 +18,7 @@ namespace CatalogueWEB
         {
             if (!Security.IsAdmin(Session["user"]))
             {
-                Session.Add("error", "You must be an Admin to access");
+                Session.Add("error", "Need to be admin");
                 Response.Redirect("Error.aspx");
             }
 

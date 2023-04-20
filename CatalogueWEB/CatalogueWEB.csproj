@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -57,7 +58,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Articles.aspx" />
     <Content Include="ArticlesForm.aspx" />
+    <Content Include="ContactUs.aspx" />
     <Content Include="Content\estilos.css" />
     <Content Include="Default.aspx" />
     <Content Include="Details.aspx" />
@@ -94,6 +95,13 @@
     </Compile>
     <Compile Include="ArticlesForm.aspx.designer.cs">
       <DependentUpon>ArticlesForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContactUs.aspx.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContactUs.aspx.designer.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
