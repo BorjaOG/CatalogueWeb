@@ -14,26 +14,25 @@
     <%if (FiltroAvanzado)
         { %>
     <div class="row">
-        <div class="col-2">
-            <div class="mb-3">
-                <asp:Label ID="ddlCampo" runat="server" Text="Field"></asp:Label>
-                <asp:DropDownList style="width:100%" ID="ddField" AutoPostBack="true" CssClass="custom-dropdown" runat="server" OnSelectedIndexChanged="ddField_SelectedIndexChanged">
-                    <asp:ListItem Text="" />
-                    <asp:ListItem Text="Name" />
-                    <asp:ListItem Text="Brand" />
-                    <asp:ListItem Text="Price" />
-                </asp:DropDownList>
-            </div>
-        </div>    
-    <div class="col-2">
-        <div class="mb-3">
-            <asp:Label  ID="Label1" runat="server" Text="Criteria"></asp:Label>
-            <asp:DropDownList style="width:100%" ID="ddCriteria" CssClass="custom-dropdown" runat="server">
-                
-            </asp:DropDownList>
-        </div>
+        <div class="col-4">
+    <div class="mb-3">
+        <asp:Label ID="ddlCampo" runat="server" Text="Field"></asp:Label>
+        <asp:DropDownList style="width:100%" ID="ddField" AutoPostBack="true" CssClass="custom-dropdown" runat="server" OnSelectedIndexChanged="ddField_SelectedIndexChanged">
+            <asp:ListItem Text="" />
+            <asp:ListItem Text="Name" />
+            <asp:ListItem Text="Brand" />
+            <asp:ListItem Text="Price" />
+        </asp:DropDownList>
     </div>
-    <div class="col-2">
+</div>
+
+<div class="col-4">
+    <div class="mb-3">
+        <asp:Label ID="Label1" runat="server" Text="Criteria"></asp:Label>
+        <asp:DropDownList style="width:100%" ID="ddCriteria" CssClass="custom-dropdown" runat="server"></asp:DropDownList>
+    </div>
+</div>
+    <div class="col-4">
         <div class="mb-3">
             <asp:Label  ID="Label2" runat="server" Text="Filter"></asp:Label>
             <asp:TextBox style="width:100%" CssClass="custom-dropdown" ID="txtFiltroAvanzado" runat="server"></asp:TextBox>           
