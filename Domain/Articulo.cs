@@ -24,5 +24,7 @@ namespace Domain
         public Marca Marca { get; set; }
         [DisplayName("Category")]
         public Categoria Categoria { get; set; }
+        public bool EsFavorito { get; set; }
+
     }
 }

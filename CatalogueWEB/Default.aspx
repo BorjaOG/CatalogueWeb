@@ -23,10 +23,8 @@
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                             <p class="card-text"><%#Eval("Descripcion") %></p>
                             <a id="btn-detail" class="btn btn-info" href="Details.aspx?Id=<%#Eval("Id") %>">View Details</a>
-
-                            <button style="margin-left: 60%; display: inline-block; color:goldenrod; border-radius:50%; vertical-align: middle" type="button" class="btn-favorite"; ">
-                                <span class="fa fa-star"></span>
-                            </button>
+                          <asp:Button style=" margin-left:5%; border-radius:50%;" 
+                                ID="btnFav" runat="server" Text="⭐"  />      
                         </div>
                     </div>
                 </div>

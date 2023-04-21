@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Catalogo;
+using Domain;
+using Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +14,31 @@ namespace CatalogueWEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Security.IsAdmin(Session["user"]))
+            {
+                Session.Add("error", "Need to be admin");
+                Response.Redirect("Error.aspx");
+            }
+  
+            if (!IsPostBack)
+            {
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                dgvArticles.DataSource = negocio.listarSP();
+                dgvArticles.DataBind();
+            }
+        }
 
+        protected void dgvArticles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = dgvArticles.SelectedDataKey.Value.ToString();
+            Response.Redirect("Favorites.aspx?id=" + id);
+        }
+
+        protected void dgvArticles_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvArticles.DataSource = Session["listaArticulosFavoritos"];
+            dgvArticles.PageIndex = e.NewPageIndex;
+            dgvArticles.DataBind();
         }
     }
 }

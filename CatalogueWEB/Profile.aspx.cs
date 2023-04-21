@@ -80,7 +80,7 @@ namespace CatalogueWEB
                 }
                 else
                 {
-                    Session.Add("Error", "No se pudo guardar la imagen.");
+                    Session.Add("Error", "Image can't be save");
                 }
             }
             catch (Exception ex)

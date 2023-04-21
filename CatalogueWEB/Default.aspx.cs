@@ -32,5 +32,7 @@ namespace CatalogueWEB
             RepeaterArticles.DataSource = ListaArticulos;
             RepeaterArticles.DataBind();
         }
+
+       
     }
 }
