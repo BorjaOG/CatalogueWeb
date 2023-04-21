@@ -31,8 +31,11 @@
                 <label for="txtPrecio" class="form-label">Price</label>
                 <asp:TextBox ReadOnly="true" ID="txtPrecio" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
+            <div class="mb-3">
+             <asp:Label data-imgpath="~/Images/star.png" ID="lblFav" runat="server" Visible="true" Text="This is one of your favorites⭐"></asp:Label>
+               </div>
             <a class="btn btn-info" href="Default.aspx">Back</a>
-        </div>
+            </div>
         <div class="col-6">
             <div class="mb-3">
                 <label for="txtDescripcion" class="form-label">Description</label>

@@ -46,6 +46,11 @@ namespace CatalogueWEB
             }
 
         }
+        private bool IsImage(string contentType)
+        {
+            return contentType == "image/jpeg" || contentType == "image/png" || contentType == "image/gif";
+        }
+
 
         protected void btnSaveProfile_Click(object sender, EventArgs e)
         {
@@ -62,18 +67,15 @@ namespace CatalogueWEB
 
                 if (File.Exists(filePath))
                 {
+
                     user.UrlImagenPerfil = fileName;
                     user.Nombre = txtName.Text;
                     user.Apellido = TxtSurname.Text;
 
                     negocio.actualizar(user);
-
-                    // actualizar imagen del avatar
+                 
                     Image img = (Image)Master.FindControl("imgAvatar");
-                    img.ImageUrl = "~/Images/" + user.UrlImagenPerfil + "?v=" + DateTime.Now.Ticks.ToString();
-                    ;
-
-                    // actualizar imagen del perfil
+                    img.ImageUrl = "~/Images/" + user.UrlImagenPerfil + "?v=" + DateTime.Now.Ticks.ToString();                  
                     ImgPerfil.ImageUrl = "~/Images/" + user.UrlImagenPerfil + "?v=" + DateTime.Now.Ticks.ToString();
 
                     Debug.WriteLine("Imagen guardada en: " + filePath);
