@@ -75,7 +75,6 @@
     <Content Include="Details.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Favorites.aspx" />
-    <Content Include="Font\css\all.min.css" />
     <Content Include="LogIn.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Scripts\JavaScript.js" />
