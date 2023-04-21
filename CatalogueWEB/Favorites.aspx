@@ -7,13 +7,11 @@
        OnSelectedIndexChanged="dgvArticles_SelectedIndexChanged"  runat="server"
         OnPageIndexChanging="dgvArticles_PageIndexChanging"  AllowPaging="true" PageSize="10" >
          <Columns>
-           <asp:TemplateField HeaderText="Favoritos">
+           <asp:TemplateField HeaderText="Favorites">
             <ItemTemplate>
-                <asp:CheckBox ID="chkFavorite" runat="server" />
-                <asp:LinkButton ID="lbFavorite" runat="server" CommandName="Select" Text="⭐" />
+                <asp:Label data-imgpath="~/Images/star.png" ID="lblFav" runat="server" Visible="false" Text="⭐"></asp:Label>                
             </ItemTemplate>
-        </asp:TemplateField>
-            
+        </asp:TemplateField>            
             <asp:BoundField HeaderText="Código" DataField="Codigo" />
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
             <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />

@@ -22,9 +22,11 @@
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                             <p class="card-text"><%#Eval("Descripcion") %></p>
+                            <p class="card-text">$<%# string.Format("{0:0.00}", Eval("Precio")) %></p>
                             <a id="btn-detail" class="btn btn-info" href="Details.aspx?Id=<%#Eval("Id") %>">View Details</a>
-                          <asp:Button style=" margin-left:5%; border-radius:50%;" 
-                                ID="btnFav" runat="server" Text="⭐"  />      
+                            <asp:Button Style="margin-left:5%; border-radius:50%; background:transparent"
+                                ID="btnFav" OnClick="btnFav_Click" runat="server" Text="⭐"
+                                data-id='<%#Eval("Id") %>' />
                         </div>
                     </div>
                 </div>

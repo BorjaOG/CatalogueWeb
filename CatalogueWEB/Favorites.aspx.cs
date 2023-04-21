@@ -14,16 +14,33 @@ namespace CatalogueWEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Security.IsAdmin(Session["user"]))
-            {
-                Session.Add("error", "Need to be admin");
-                Response.Redirect("Error.aspx");
-            }
-  
             if (!IsPostBack)
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
-                dgvArticles.DataSource = negocio.listarSP();
+                var listaArticulos = negocio.listarSP();
+
+                // Obtener el id del usuario que ha iniciado sesión
+                int userId = Convert.ToInt32(Session["idUser"]);
+
+                // Obtener la lista de favoritos del usuario
+                FavoriteNegocio favNegocio = new FavoriteNegocio();
+                var listaFavoritos = favNegocio.ListarFavoritosPorUsuario(userId);
+
+                // Iterar sobre la lista de artículos y establecer la propiedad Visible de lblFav según si el artículo está en la lista de favoritos
+                foreach (GridViewRow row in dgvArticles.Rows)
+
+                {
+                    var hfId = (HiddenField)row.FindControl("hfId");
+                    var lblFav = (Label)row.FindControl("lblFav");
+                    var idArticulo = Convert.ToInt32(hfId.Value);
+
+                    if (listaFavoritos.Any(f => f.IdArticulo == idArticulo))
+                    {
+                        lblFav.Visible = true;
+                    }
+                }
+
+                dgvArticles.DataSource = listaArticulos;
                 dgvArticles.DataBind();
             }
         }
@@ -40,5 +57,6 @@ namespace CatalogueWEB
             dgvArticles.PageIndex = e.NewPageIndex;
             dgvArticles.DataBind();
         }
+
     }
 }
