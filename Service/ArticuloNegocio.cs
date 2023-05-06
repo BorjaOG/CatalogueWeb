@@ -72,8 +72,6 @@ namespace Catalogo
             DataAcces data = new DataAcces();
             try
             {
-                // string consulta = "Select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, A.Precio, A.IdMarca, A.IdCategoria, M.Id, C.Id\r\nFrom ARTICULOS A, CATEGORIAS C, MARCAS M \r\nwhere C.Id = A.IdCategoria and M.id = A.IdMarca";               
-                // data.setearConsulta(consulta); //
 
                 data.setearProcedimiento("StoredListar");
                 data.ejecutarLectura();
@@ -219,7 +217,7 @@ namespace Catalogo
             }
         }
 
-        //Filter advanced//
+        //Advanced Filter //
 
         public List<Articulo> filtrar(string field, string criteria, string filter)
         {
