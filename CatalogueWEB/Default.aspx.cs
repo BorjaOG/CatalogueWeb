@@ -40,7 +40,6 @@ namespace CatalogueWEB
         {
             if (Session["user"] == null)
             {
-                // Redirigir a la página de login
                 Response.Redirect("Login.aspx");
             }
             else
@@ -48,16 +47,13 @@ namespace CatalogueWEB
                 int idArticulo = int.Parse(((Button)sender).CommandArgument);
                 User user = (User)Session["user"];
 
-                // Crear objeto Favorite con los datos del artículo y el usuario
                 Favorite nuevoFavorito = new Favorite();
                 nuevoFavorito.IdArticulo = idArticulo;
                 nuevoFavorito.IdUser = user.Id;
 
-                // Llamar al método para insertar el nuevo favorito en la base de datos
                 FavoriteNegocio negocio = new FavoriteNegocio();
                 negocio.insertarNuevoFavorito(nuevoFavorito);
 
-                // Redirigir a la página de favoritos
                 Response.Redirect("Favorites.aspx");
             }
         }
