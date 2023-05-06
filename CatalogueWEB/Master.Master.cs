@@ -13,6 +13,24 @@ namespace CatalogueWEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Security.ActiveSession(Session["trainee"]))
+            {
+                User user = (User)Session["trainee"];
+                
+                if (!string.IsNullOrEmpty(user.UrlImagenPerfil))
+                {
+                    imgAvatar.ImageUrl = "~/Images/" + user.UrlImagenPerfil + "?v=" + DateTime.Now.Ticks.ToString();
+                }
+                else
+                {
+                    imgAvatar.ImageUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
+                }
+
+            }
+            else
+            {
+                imgAvatar.ImageUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
+            }
             if (!(Page is LogIn || Page is SignIn || Page is Default || Page is ContactUs))
             {
                 if (!Security.ActiveSession(Session["user"]))

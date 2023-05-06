@@ -65,6 +65,7 @@ namespace Catalogo
             }
 
         }
+
         public List<Articulo> listarSP()
         {
             List<Articulo> lista = new List<Articulo>();
@@ -103,6 +104,47 @@ namespace Catalogo
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+        public List<Articulo> listarArtById(List<int> listaArtId)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            DataAcces datos = new DataAcces();
+            try
+            {
+                string consulta = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion TipoMarca, " +
+                    "C.Descripcion TipoCategoria, ImagenUrl, A.Precio, A.IdMarca, A.IdCategoria " +
+                    "FROM ARTICULOS A, CATEGORIAS C, MARCAS M " +
+                    "WHERE C.Id = A.IdCategoria AND A.IdCategoria = M.Id AND A.Id IN (" + string.Join(",", listaArtId) + ")";
+                datos.setearConsulta(consulta);
+
+                datos.ejecutarLectura();
+                while (datos.Reader.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.Id = (int)datos.Reader["Id"];
+                    aux.Codigo = (string)datos.Reader["Codigo"];
+                    aux.Nombre = (string)datos.Reader["Nombre"];
+                    if (!(datos.Reader["Descripcion"] is DBNull))
+                        aux.Descripcion = (string)datos.Reader["Descripcion"];
+                    aux.Marca = new Marca();
+                    aux.Marca.Id = (int)datos.Reader["IdMarca"];
+                    aux.Marca.Descripcion = (string)datos.Reader["TipoMarca"];
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Id = (int)datos.Reader["IdCategoria"];
+                    aux.Categoria.Descripcion = (string)datos.Reader["TipoCategoria"];
+                    if (!(datos.Reader["ImagenUrl"] is DBNull))
+                        aux.UrlImagen = (string)datos.Reader["ImagenUrl"];
+                    aux.Precio = (decimal)datos.Reader["Precio"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

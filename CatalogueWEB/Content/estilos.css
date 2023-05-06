@@ -28,7 +28,8 @@
     bottom: 0;
     width: 100%;
     text-align: center; /* Centra el contenido del footer */
-    background-color: #212121; 
+    background-color: #007bff;
+    padding: 20px 0;
 }
 .footer button {
         margin: 4px auto; 

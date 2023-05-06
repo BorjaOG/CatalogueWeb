@@ -21,9 +21,10 @@
 
     <form id="form1" runat="server">
         <div>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav style="font-size: 20px; background-color: #111846" class="navbar navbar-expand-lg navbar-dark  fixed-top">
+
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="Default.aspx">Catalogue</a>
+                    <a style=" font-size: 30px" class="navbar-brand" href="Default.aspx">Catalogue</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -45,12 +46,12 @@
                         </ul>
                         <ul style="margin-top:10px" class="navbar-nav ms-auto">
                             <li class="button-container mb-3">
-                                <asp:Button class="btn btn-outline-info" style="margin-right: 5px" 
-                                   Onclick="btnSignIn_Click" ID="btnSignIn" runat="server" Text="Sign In" />                         
+                                <asp:Button class="btn btn-outline-info" style="margin-right: 10px; margin-top:1px" 
+                                   Onclick="btnSignIn_Click" ID="btnSignIn" runat="server" Text="Sign Up" />                         
                             </li>
                             <li class="nav-item">
                                 <asp:Button  class="btn btn-outline-info" 
-                                   Onclick="btnLogIn_Click" ID="btnLogIn" style="margin-bottom:0.2%" runat="server" Text="Log In" />                               
+                                   Onclick="btnLogIn_Click" ID="btnLogIn" style="margin-right: 10px; margin-bottom:0.4%" runat="server" Text="Log In" />                               
                                 <asp:Button ID="btnLogout" runat="server" Text="Log Out" Onclick="btnLogout_Click" Visible="false" CssClass="btn btn-outline-info" />
                                 <asp:Image ID= "imgAvatar" style="height:40px; width:40px; border-radius:50%"       
                                    class="nav-user-image" runat="server" />
@@ -59,15 +60,15 @@
                     </div>
                 </div>
             </nav>
-            <hr />
+            <hr / style="margin-top:7%;margin-bottom:4%">
             <div class="container">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
-            <footer style="margin-top:2.5%" class="footer">
-                <asp:Button style="margin-top:0.3%; margin-bottom:0.3%" class="btn btn-info btn-sm" 
+            <footer style=" background-color: #111846; padding:1%; margin-top:2.5%" class="footer navbar-primary">
+                <asp:Button style="margin-top:0.3%; margin-bottom:0.3%; width:10%;" class="btn btn-info " 
                     ID="btnContact" onclick="btnContact_Click"
-                    runat="server" Text="Contac tUs" />
+                    runat="server" Text="Contact Us" />
             </footer>
         </div>
     </form>

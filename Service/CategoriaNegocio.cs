@@ -9,6 +9,7 @@ namespace Service
 {
     public class CategoriaNegocio
     {
+
         public List<Categoria> listar()
         {
 			List<Categoria> lista = new List<Categoria>();

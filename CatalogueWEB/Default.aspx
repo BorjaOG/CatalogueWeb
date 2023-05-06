@@ -17,8 +17,8 @@
         <asp:Repeater ID="RepeaterArticles" runat="server">
             <ItemTemplate>
                 <div class="col">
-                    <div class="card">
-                        <img src="<%#Eval("UrlImagen") %>" alt="..." class="card-img-top" />
+                    <div class="card" runat="server">
+                        <img src="<%#Eval("UrlImagen") %>" alt="..." class="card-img-top" onerror="this.src='https://www.mansor.com.uy/wp-content/uploads/2020/06/imagen-no-disponible2.jpg'" />
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                             <p class="card-text"><%#Eval("Descripcion") %></p>
@@ -26,7 +26,8 @@
                             <a id="btn-detail" class="btn btn-info" href="Details.aspx?Id=<%#Eval("Id") %>">View Details</a>
                             <asp:Button Style="margin-left:5%; border-radius:50%; background:transparent"
                                 ID="btnFav" OnClick="btnFav_Click" runat="server" Text="⭐"
-                                data-id='<%#Eval("Id") %>' />
+                                 CommandArgument='<%#Eval("Id") %>' />
+                            <asp:Label ID="lblMensaje1" runat="server" Text=""></asp:Label>
                         </div>
                     </div>
                 </div>

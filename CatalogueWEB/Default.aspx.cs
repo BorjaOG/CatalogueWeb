@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 using Domain;
 using Service;
 using System.Web.UI.HtmlControls;
+using System.Web.Services.Description;
+using System.Drawing;
 
 namespace CatalogueWEB
 {
@@ -36,33 +38,31 @@ namespace CatalogueWEB
 
         protected void btnFav_Click(object sender, EventArgs e)
         {
-            // Verificar si la sesión "idUser" está establecida
-            if (Session["idUser"] != null)
+            if (Session["user"] == null)
             {
-                // Obtener el id del usuario que ha iniciado sesión
-                int userId = Convert.ToInt32(Session["idUser"]);
-
-                // Obtener el id del artículo correspondiente al botón que se ha pulsado
-                Button btn = (Button)sender;
-                RepeaterItem item = (RepeaterItem)btn.NamingContainer;
-                int articuloId = Convert.ToInt32(((HiddenField)item.FindControl("hfId")).Value);
-
-                // Crear un objeto Favorite con los ids del usuario y del artículo
-                Favorite fav = new Favorite
-                {
-                    Id = userId,
-                    IdArticulo = articuloId
-                };
-
-                // Llamar al método InsertarNuevoFav del objeto FavoriteNegocio para agregar el favorito a la base de datos
-                FavoriteNegocio favNegocio = new FavoriteNegocio();
-                favNegocio.InsertarNuevoFav(fav);
+                // Redirigir a la página de login
+                Response.Redirect("Login.aspx");
             }
             else
             {
-                // Si la sesión "idUser" no está establecida, redirigir al usuario a la página de inicio de sesión
+                int idArticulo = int.Parse(((Button)sender).CommandArgument);
+                User user = (User)Session["user"];
+
+                // Crear objeto Favorite con los datos del artículo y el usuario
+                Favorite nuevoFavorito = new Favorite();
+                nuevoFavorito.IdArticulo = idArticulo;
+                nuevoFavorito.IdUser = user.Id;
+
+                // Llamar al método para insertar el nuevo favorito en la base de datos
+                FavoriteNegocio negocio = new FavoriteNegocio();
+                negocio.insertarNuevoFavorito(nuevoFavorito);
+
+                // Redirigir a la página de favoritos
                 Response.Redirect("Favorites.aspx");
             }
         }
+
+
+
     }
 }

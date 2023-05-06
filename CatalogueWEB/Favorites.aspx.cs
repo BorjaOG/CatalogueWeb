@@ -12,50 +12,63 @@ namespace CatalogueWEB
 {
     public partial class Favorites : System.Web.UI.Page
     {
+        public List<Articulo> ListaArticulo { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            User user = (User)Session["User"];
+            string id = Request.QueryString["id"];
+            if (!string.IsNullOrEmpty(id) && int.TryParse(id, out int idArticulo))
             {
-                ArticuloNegocio negocio = new ArticuloNegocio();
-                var listaArticulos = negocio.listarSP();
+                FavoriteNegocio negocio = new FavoriteNegocio();
+                Favorite nuevo = new Favorite();
 
-                // Obtener el id del usuario que ha iniciado sesión
-                int userId = Convert.ToInt32(Session["idUser"]);
+                nuevo.IdUser = user.Id;
+                nuevo.IdArticulo = int.Parse(id);
 
-                // Obtener la lista de favoritos del usuario
-                FavoriteNegocio favNegocio = new FavoriteNegocio();
-                var listaFavoritos = favNegocio.ListarFavoritosPorUsuario(userId);
+                negocio.insertarNuevoFavorito(nuevo);
+            }
+            ListaArticulo = new List<Articulo>();
 
-                // Iterar sobre la lista de artículos y establecer la propiedad Visible de lblFav según si el artículo está en la lista de favoritos
-                foreach (GridViewRow row in dgvArticles.Rows)
-
+            if (user != null)
+            {
+                FavoriteNegocio negocioart = new FavoriteNegocio();
+                List<Articulo> ListaArticulo = new List<Articulo>();
+                List<Favorite> favoritos = negocioart.listarFavoritos(user.Id);
+                List<int> idArticulosFavoritos = favoritos.Select(f => f.IdArticulo).ToList();
+                if (idArticulosFavoritos.Count > 0)
                 {
-                    var hfId = (HiddenField)row.FindControl("hfId");
-                    var lblFav = (Label)row.FindControl("lblFav");
-                    var idArticulo = Convert.ToInt32(hfId.Value);
-
-                    if (listaFavoritos.Any(f => f.IdArticulo == idArticulo))
-                    {
-                        lblFav.Visible = true;
-                    }
+                    ArticuloNegocio art = new ArticuloNegocio();
+                    ListaArticulo = art.listarArtById(idArticulosFavoritos);
+                    RepeaterArticles.DataSource = ListaArticulo;
+                    RepeaterArticles.DataBind();
                 }
 
-                dgvArticles.DataSource = listaArticulos;
-                dgvArticles.DataBind();
+
+            }
+            else
+            {
+                Session.Add("error", "We are unable to show the favorites 😕");
+                Response.Redirect("Error.aspx");
             }
         }
 
-        protected void dgvArticles_SelectedIndexChanged(object sender, EventArgs e)
+        protected void btnEliminarFav_Click(object sender, EventArgs e)
         {
-            string id = dgvArticles.SelectedDataKey.Value.ToString();
-            Response.Redirect("Favorites.aspx?id=" + id);
-        }
+            User user = (User)Session["user"];
+            FavoriteNegocio negocio = new FavoriteNegocio();
 
-        protected void dgvArticles_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            dgvArticles.DataSource = Session["listaArticulosFavoritos"];
-            dgvArticles.PageIndex = e.NewPageIndex;
-            dgvArticles.DataBind();
+            int idArticulo = int.Parse(((Button)sender).CommandArgument);
+            int idUser = user.Id;
+
+            negocio.eliminarFavorito(idUser, idArticulo);
+
+            // Agregar mensaje en pantalla
+            string script = "alert('El artículo se eliminó correctamente.');";
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "eliminacionCorrecta", script, true);
+
+            // Actualizar la página
+            Response.Redirect("~/Favorites.aspx");
+
         }
 
     }

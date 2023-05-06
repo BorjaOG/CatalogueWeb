@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using System.IO;
 using Domain;
 using Service;
+using System.Data.SqlClient;
 
 namespace CatalogueWEB
 {
@@ -15,6 +16,7 @@ namespace CatalogueWEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblError.Visible = false;
             if (!IsPostBack)
             {
                 User user = (User)Session["user"];
@@ -54,6 +56,15 @@ namespace CatalogueWEB
 
         protected void btnSaveProfile_Click(object sender, EventArgs e)
         {
+            
+            if (!txtPhoto.HasFile)
+            {
+                lblError.Text = "Enter a new Image please";
+                lblError.ForeColor = System.Drawing.Color.Red;
+                lblError.Visible = true;
+                return;
+            }
+
             try
             {
                 UsuarioNegocio negocio = new UsuarioNegocio();
