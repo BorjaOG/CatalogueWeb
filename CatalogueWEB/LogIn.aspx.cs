@@ -19,18 +19,23 @@ namespace CatalogueWEB
 
         protected void btnlogIn_Click(object sender, EventArgs e)
         {
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
+
                 User user = new User();
                 UsuarioNegocio negocio = new UsuarioNegocio();
 
 
             try
             {
+                
                 user.Email = txtEmailLogin.Text;
                 user.Pass = txtPassLogin.Text;
                 if (negocio.logIn(user))
                 {
                     Session.Add("user", user);
-                    Response.Redirect("Profile.aspx",false);
+                    Response.Redirect("Default.aspx",false);
                 }
                 else
                 {
@@ -38,6 +43,7 @@ namespace CatalogueWEB
                     Response.Redirect("Error.aspx");
                 }
             }
+           
             catch (Exception ex)
             {
                 Session.Add("error", ex.ToString());

@@ -22,12 +22,14 @@
             <div style="margin-top:10%">
             <asp:Button  runat="server" type="submit" ID="btnSaveProfile" Onclick="btnSaveProfile_Click" class="btn btn-info" Text="Save" />          
             <a  class="btn btn-info" href="Default.aspx">Back</a>
-        </div>            
+        </div>
+            <asp:Label ID="lblError" runat="server" Text="Label"></asp:Label>               
       </div>         
         <div class="col-4"> 
             <div class="mb-3">
                 <div >   
-            <asp:Label  ID="lblImagenPerfil" runat="server" Text="Profile Image"></asp:Label>           
+            <asp:Label  ID="lblImagenPerfil" runat="server" Text="Profile Image"></asp:Label>  
+                    
            <asp:FileUpload style="margin-top:2%"  ID="txtPhoto" class="form-control" type="file" runat="server" />
            </div>
             <asp:Image style="margin-top:10%"  ID="ImgPerfil" ImageUrl="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" 

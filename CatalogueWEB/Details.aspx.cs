@@ -16,6 +16,15 @@ namespace CatalogueWEB
         {
             try
             {
+
+                if (Request.QueryString["fromFavorites"] == "true")
+                {
+                    lblFav.Visible = true;
+                }
+                else
+                {
+                    lblFav.Visible = false;
+                }
                 //Inital Config..//
                 if (!IsPostBack)
                 {
@@ -57,6 +66,8 @@ namespace CatalogueWEB
 
                     txtUrlImagen_TextChanged(sender, e);
                 }
+
+                
             }
             catch (Exception ex)
             {
@@ -64,6 +75,18 @@ namespace CatalogueWEB
                 throw;
             }
         }
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            if (Request.QueryString["fromFavorites"] == "true")
+            {
+                Response.Redirect("Favorites.aspx");
+            }
+            else
+            {
+                Response.Redirect("Default.aspx");
+            }
+        }
+
 
         protected void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {

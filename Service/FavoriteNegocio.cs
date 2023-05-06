@@ -10,41 +10,121 @@ namespace Service
 {
     public class FavoriteNegocio
     {
-        public int InsertarNuevoFav(Favorite fav)
+        
+            public List<Favorite> listarFavUserId(int idUser)
+            {
+               DataAcces datos = new DataAcces();
+                List<Favorite> lista = new List<Favorite>();
+
+                try
+                {
+                    datos.setearConsulta("Select IdArticulo from FAVORITOS where IdUser = @idUser");
+                    datos.setearParametro("@idUser", idUser);
+                    datos.ejecutarLectura();
+                    while (datos.Reader.Read())
+                    {
+                    int aux = (int)datos.Reader["idArticulo"];
+                    Favorite favorite = new Favorite();
+                    favorite.IdArticulo = aux;
+                    lista.Add(favorite);
+                }
+
+                    datos.cerrarConection();
+                    return lista;
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+
+            }
+
+        public List<Favorite> listarFavoritos(int idUsuario)
         {
-            DataAcces data = new DataAcces();
+            DataAcces dataAccess = new DataAcces();
             try
             {
-                data.setearProcedimiento("insertNewFav");
-                data.setearParametro("@idUser", fav.Id); 
-                data.setearParametro("@idArticulo", fav.IdArticulo);
-                return data.ejecutarAccionScalar();
+                dataAccess.setearConsulta("SELECT * FROM favoritos WHERE idUser = @idUser");
+                dataAccess.setearParametro("@idUser", idUsuario);
+                dataAccess.ejecutarLectura();
+
+                List<Favorite> listaFavoritos = new List<Favorite>();
+
+                while (dataAccess.Reader.Read())
+                {
+                    Favorite fav = new Favorite();
+                    fav.Id = (int)dataAccess.Reader["id"];
+                    fav.IdUser = (int)dataAccess.Reader["idUser"];
+                    fav.IdArticulo = (int)dataAccess.Reader["idArticulo"];
+
+                    listaFavoritos.Add(fav);
+                }
+
+                return listaFavoritos;
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
-        }
-        public List<Favorite> ListarFavoritosPorUsuario(int idUsuario)
-        {
-            List<Favorite> listaFavoritos = new List<Favorite>();
-            DataAcces data = new DataAcces();
-            string consulta = "Select * from FAVORITOS where idUser = @idUser";
-            data.setearConsulta(consulta);
-            data.setearParametro("@idUser", idUsuario);
-            data.ejecutarLectura();
-            while (data.Reader.Read())
+            finally
             {
-                Favorite fav = new Favorite();
-                fav.Id = Convert.ToInt32(data.Reader["id"]);
-                fav.IdArticulo = Convert.ToInt32(data.Reader["idArticulo"]);
-
-                listaFavoritos.Add(fav);
+                dataAccess.cerrarConection();
             }
-            data.cerrarConection();
-            return listaFavoritos;    
         }
 
-    }
-}
+
+
+        public void insertarNuevoFavorito(Favorite nuevo)
+            {
+                DataAcces datos = new DataAcces();
+                try
+                {
+                    datos.setearConsulta("INSERT INTO FAVORITOS (IdUser, IdArticulo)VALUES(@idUser, @idArticulo)");
+                    datos.setearParametro("@idUser", nuevo.IdUser);
+                    datos.setearParametro("@idArticulo", nuevo.IdArticulo);
+                    datos.ejecutarAccion();
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                finally
+                {
+                    datos.cerrarConection();
+                }
+
+            }
+
+            public void eliminarFavorito(int idUser, int id)
+            {
+                try
+                {
+                    DataAcces datos = new DataAcces();
+                    datos.setearConsulta("delete from FAVORITOS where IdArticulo = @idArticulo and IdUser = @idUser");
+                    datos.setearParametro("IdArticulo", id);
+                    datos.setearParametro("idUser", idUser);
+                    datos.ejecutarAccion();
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
+        public void eliminarFav(int id)
+        {
+            DataAcces datos = new DataAcces();
+            datos.setearConsulta("delete from FAVORITOS where IdArticulo = @idArticulo");
+            datos.setearParametro("@idArticulo", id);
+            datos.ejecutarAccion();
+        }
+    } 
+    } 
+
+
+
+        
+    
