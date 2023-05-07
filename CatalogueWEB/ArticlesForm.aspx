@@ -38,6 +38,8 @@
                 <ContentTemplate>
                     <div class="button-container mb-3">
                         <asp:Button ID="btnAceptar" OnClick="btnAceptar_Click" runat="server" CssClass="btn btn-info" Text="Save" />
+                       <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true" ShowSummary="false" ValidationGroup="valGroup" />
+
                         <a class="btn btn-info" href="Articles.aspx">Back</a>
                         <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" CssClass="btn btn-danger" Text="Delete" />      
                         <div class="mb-3" style="margin-top:10px ">

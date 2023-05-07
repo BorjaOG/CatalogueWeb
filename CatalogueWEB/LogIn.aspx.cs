@@ -26,10 +26,8 @@ namespace CatalogueWEB
                 User user = new User();
                 UsuarioNegocio negocio = new UsuarioNegocio();
 
-
             try
-            {
-                
+            {               
                 user.Email = txtEmailLogin.Text;
                 user.Pass = txtPassLogin.Text;
                 if (negocio.logIn(user))
@@ -40,10 +38,9 @@ namespace CatalogueWEB
                 else
                 {
                     Session.Add("error", "Incorrect User/Pass");
-                    Response.Redirect("Error.aspx");
+                    Response.Redirect("Error.aspx", false);
                 }
-            }
-           
+            }          
             catch (Exception ex)
             {
                 Session.Add("error", ex.ToString());

@@ -34,6 +34,7 @@
             <div class="mb-3">
              <asp:Label data-imgpath="~/Images/star.png" ID="lblFav" runat="server" Visible="true" Text="THIS IS ONE OF YOUR FAVORITES ⭐"></asp:Label>
                </div>
+
             <asp:Button class="btn btn-info" ID="btnBack" runat="server" Text="Back" OnClick="btnBack_Click" />
             </div>
         <div class="col-6">

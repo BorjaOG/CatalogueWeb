@@ -17,6 +17,13 @@ namespace CatalogueWEB
        public bool ConfirmaEliminacion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtId.Attributes.Add("required", "true");
+            txtCodigo.Attributes.Add("required", "true");
+            txtNombre.Attributes.Add("required", "true");
+            txtPrecio.Attributes.Add("required", "true");
+            txtDescripcion.Attributes.Add("required", "true");
+            txtUrlImagen.Attributes.Add("required", "true");
+
             if (Request.QueryString["mode"] == "add")
             {
                 btnDelete.Visible = false;
@@ -122,6 +129,7 @@ namespace CatalogueWEB
         {
             try
             {
+
                 if (chkConfirmDelete.Checked)
                 {
                      ArticuloNegocio negocio = new ArticuloNegocio();

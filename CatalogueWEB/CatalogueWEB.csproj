@@ -75,6 +75,7 @@
     <Content Include="Details.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Favorites.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="LogIn.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Scripts\JavaScript.js" />
@@ -130,6 +131,9 @@
     </Compile>
     <Compile Include="Favorites.aspx.designer.cs">
       <DependentUpon>Favorites.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="LogIn.aspx.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
