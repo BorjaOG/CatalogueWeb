@@ -4,6 +4,7 @@
     <link href="Content/estilos.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-3vZLgWZVL8e/F4k9z4t+QLM1WLCfx8YwAWwM71YBv7tAeW8g4GoB4X9OicSPm1CjrWm66lLwSjKzsvhz0p/GOA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="Font/css/all.min.css" rel="stylesheet" />
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -13,6 +14,7 @@
         <asp:Label ID="lblFilter" runat="server" Text="Search by Name:"></asp:Label>
         <asp:TextBox Style="margin-bottom: 6%" CssClass="form-control my-textbox" ID="txtFilter" runat="server" AutoPostBack="true" OnTextChanged="txtFilter_TextChanged"></asp:TextBox>
     </div>
+        <h5> <asp:Label ID="lblfav" runat="server" Visible="false" style="color:darkgoldenrod" Text="Article added to favorites ⭐"></asp:Label></h5>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <asp:Repeater ID="RepeaterArticles" runat="server">
             <ItemTemplate>
@@ -24,10 +26,9 @@
                             <p class="card-text"><%#Eval("Descripcion") %></p>
                             <p class="card-text">$<%# string.Format("{0:0.00}", Eval("Precio")) %></p>
                             <a id="btn-detail" class="btn btn-info" href="Details.aspx?Id=<%#Eval("Id") %>">View Details</a>
-                            <asp:Button Style="margin-left:5%; border-radius:50%; background:transparent"
-                                ID="btnFav" OnClick="btnFav_Click" runat="server" Text="⭐"
-                                 CommandArgument='<%#Eval("Id") %>' />
-                            <asp:Label ID="lblMensaje1" runat="server" Text=""></asp:Label>
+                            <asp:Button Style="margin-left: 5%; border-radius: 50%; background: transparent"
+                               CssClass="btn btn-info btn-fav" ID="btnFav" OnClick="btnFav_Click" runat="server" Text="⭐"
+                                CommandArgument='<%#Eval("Id") %>' />
                         </div>
                     </div>
                 </div>

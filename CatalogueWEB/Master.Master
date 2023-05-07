@@ -60,7 +60,7 @@
                     </div>
                 </div>
             </nav>
-            <hr / style="margin-top:7%;margin-bottom:4%">
+            <hr / style="margin-top:6%;margin-bottom:4%">
             <div class="container">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>

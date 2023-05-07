@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -19,32 +20,54 @@ namespace CatalogueWEB
 
         protected void btnlogIn_Click(object sender, EventArgs e)
         {
-            Page.Validate();
-            if (!Page.IsValid)
+            if (string.IsNullOrEmpty(txtEmailLogin.Text))
+            {
+                lblMessage.Text = "Please enter an email address.";
                 return;
+            }
+            if (!IsValidEmail(txtEmailLogin.Text))
+            {
+                lblMessage.Text = "Please enter a valid email address.";
+                return;
+            }
+            if (string.IsNullOrEmpty(txtPassLogin.Text))
+            {
+                lblMessage1.Text = "Please enter an Password.";
+                return;
+            }
 
-                User user = new User();
-                UsuarioNegocio negocio = new UsuarioNegocio();
+            User user = new User();
+            UsuarioNegocio negocio = new UsuarioNegocio();
 
             try
-            {               
+            {
                 user.Email = txtEmailLogin.Text;
                 user.Pass = txtPassLogin.Text;
                 if (negocio.logIn(user))
                 {
                     Session.Add("user", user);
-                    Response.Redirect("Default.aspx",false);
+                    Response.Redirect("Default.aspx", false);
                 }
                 else
                 {
-                    Session.Add("error", "Incorrect User/Pass");
-                    Response.Redirect("Error.aspx", false);
+                    lblError.Text = "The email or password you entered is incorrect. Please try again.";
                 }
-            }          
+            }
             catch (Exception ex)
             {
-                Session.Add("error", ex.ToString());
-                Response.Redirect("Error.aspx");
+                lblError.Text = ex.Message;
+            }
+        }
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

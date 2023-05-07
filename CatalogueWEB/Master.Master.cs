@@ -31,7 +31,7 @@ namespace CatalogueWEB
             {
                 imgAvatar.ImageUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
             }
-            if (!(Page is LogIn || Page is SignIn || Page is Default || Page is ContactUs || Page is Error))
+            if (!(Page is LogIn || Page is SignIn || Page is Default || Page is ContactUs))
             {
                 if (!Security.ActiveSession(Session["user"]))
                     Response.Redirect("Login.aspx", false);

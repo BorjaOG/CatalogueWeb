@@ -18,6 +18,7 @@ namespace CatalogueWEB
         public List<Articulo> ListaArticulos { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+
             ArticuloNegocio negocio = new ArticuloNegocio();
             ListaArticulos = negocio.listarSP();
             if (!IsPostBack)
@@ -54,11 +55,17 @@ namespace CatalogueWEB
                 FavoriteNegocio negocio = new FavoriteNegocio();
                 negocio.insertarNuevoFavorito(nuevoFavorito);
 
-                Response.Redirect("Favorites.aspx");
+                // Mostrar la etiqueta lblfav durante 2 segundos
+                lblfav.Visible = true;
+                Timer timer = new Timer();
+                timer.Interval = 2000; // Tiempo en milisegundos
+                timer.Enabled = true;
+                timer.Tick += (object s, EventArgs ev) =>
+                {
+                    lblfav.Visible = false;
+                    timer.Enabled = false;
+                };
             }
         }
-
-
-
     }
 }
