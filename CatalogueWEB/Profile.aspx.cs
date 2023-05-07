@@ -17,34 +17,43 @@ namespace CatalogueWEB
         protected void Page_Load(object sender, EventArgs e)
         {
             lblError.Visible = false;
-            if (!IsPostBack)
+
+            try
             {
-                User user = (User)Session["user"];
-                if (user != null)
+                if (!IsPostBack)
                 {
-                    txtEmail.Text = user.Email;
-                    UsuarioNegocio negocio = new UsuarioNegocio();
-                    user = negocio.obtenerPorId(user.Id);
-                    txtName.Text = user.Nombre;
-                    TxtSurname.Text = user.Apellido;
-                    if (string.IsNullOrEmpty(user.UrlImagenPerfil))
+                    User user = (User)Session["user"];
+                    if (user != null)
                     {
-                        ImgPerfil.ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
+                        txtEmail.Text = user.Email;
+                        UsuarioNegocio negocio = new UsuarioNegocio();
+                        user = negocio.obtenerPorId(user.Id);
+                        txtName.Text = user.Nombre;
+                        TxtSurname.Text = user.Apellido;
+                        if (string.IsNullOrEmpty(user.UrlImagenPerfil))
+                        {
+                            ImgPerfil.ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
+                        }
+                        else
+                        {
+                            ImgPerfil.ImageUrl = "~/Images/" + user.UrlImagenPerfil;
+                        }
                     }
-                    else
+                }
+
+                else
+                {
+                    User user = (User)Session["user"];
+                    if (user == null)
                     {
-                        ImgPerfil.ImageUrl = "~/Images/" + user.UrlImagenPerfil;
+                        Response.Redirect("~/Login.aspx");
                     }
                 }
             }
-            
-            else
+            catch (Exception ex)
             {
-                User user = (User)Session["user"];
-                if (user == null)
-                {
-                    Response.Redirect("~/Login.aspx");
-                }
+                Session.Add("Error", ex.Message);
+                Response.Redirect("error.aspx");
             }
 
         }
@@ -99,6 +108,7 @@ namespace CatalogueWEB
             catch (Exception ex)
             {
                 Session.Add("Error", ex.Message);
+                Response.Redirect("error.aspx");
             }
         }
 

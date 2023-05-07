@@ -67,7 +67,6 @@ namespace CatalogueWEB
                     txtUrlImagen_TextChanged(sender, e);
                 }
 
-                
             }
             catch (Exception ex)
             {
