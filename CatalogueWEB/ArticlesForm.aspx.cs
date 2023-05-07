@@ -88,6 +88,12 @@ namespace CatalogueWEB
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (valPrecio.IsValid == false)
+            {
+                lblPrecioError.Text = "El precio debe ser un número válido";
+                return;
+            }
+
             try
             {
                 Articulo nuevo = new Articulo();

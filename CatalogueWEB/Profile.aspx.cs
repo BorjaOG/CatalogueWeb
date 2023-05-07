@@ -76,6 +76,12 @@ namespace CatalogueWEB
 
             try
             {
+                if (string.IsNullOrEmpty(txtName.Text.Trim()) || string.IsNullOrEmpty(TxtSurname.Text.Trim()))
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Name and Surname required.";
+                    return;
+                }
                 UsuarioNegocio negocio = new UsuarioNegocio();
                 User user = (User)Session["user"];
                 string ruta = Server.MapPath("./Images/");
