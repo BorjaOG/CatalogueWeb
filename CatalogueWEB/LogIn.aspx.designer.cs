@@ -24,6 +24,15 @@ namespace CatalogueWEB
         protected global::System.Web.UI.WebControls.TextBox txtEmailLogin;
 
         /// <summary>
+        /// lblMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessage;
+
+        /// <summary>
         /// txtPassLogin control.
         /// </summary>
         /// <remarks>
@@ -33,6 +42,15 @@ namespace CatalogueWEB
         protected global::System.Web.UI.WebControls.TextBox txtPassLogin;
 
         /// <summary>
+        /// lblMessage1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMessage1;
+
+        /// <summary>
         /// btnlogIn control.
         /// </summary>
         /// <remarks>
@@ -40,5 +58,14 @@ namespace CatalogueWEB
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnlogIn;
+
+        /// <summary>
+        /// lblError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
     }
 }
