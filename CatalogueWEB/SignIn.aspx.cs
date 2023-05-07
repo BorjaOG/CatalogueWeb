@@ -31,6 +31,11 @@ namespace CatalogueWEB
                     lblMessage.Text = "Please enter a valid email address.";
                     return;
                 }
+                if (string.IsNullOrEmpty(txtPass.Text))
+                {
+                    lblMessage1.Text = "Please enter an Password.";
+                    return;
+                }
                 User user = new User(); 
                 UsuarioNegocio userNegocio = new UsuarioNegocio();
                 EmailService emailService = new EmailService();
