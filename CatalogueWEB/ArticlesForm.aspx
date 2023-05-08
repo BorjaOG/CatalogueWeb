@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ArticlesForm.aspx.cs" Inherits="CatalogueWEB.ArticlesForm" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <style>
-        .validation{
-            color:red;
+    <style>
+        .validation {
+            color: red;
         }
     </style>
 </asp:Content>
@@ -37,28 +37,32 @@
             </div>
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Price</label>
-               <asp:Label ID="lblPrecioError" runat="server" ForeColor="Red" Text=""></asp:Label>
-<asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control"></asp:TextBox>
-<asp:RegularExpressionValidator ID="valPrecio" runat="server" ControlToValidate="txtPrecio"
-    ErrorMessage="El campo Precio debe ser numérico." ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
-<asp:ValidationSummary ID="valSummary" runat="server" ValidationGroup="vgEnviar" DisplayMode="BulletList"
-    HeaderText="Se han producido los siguientes errores:" ShowMessageBox="false" ShowSummary="false"
-    ShowValidationErrors="true" />
+                <asp:Label ID="lblPrecioError" runat="server" ForeColor="Red" Text=""></asp:Label>
+                <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="valPrecio" runat="server" ControlToValidate="txtPrecio"
+                    ErrorMessage="El campo Precio debe ser numérico." ValidationExpression="^\d+$" Display="Dynamic"></asp:RegularExpressionValidator>
+                <asp:ValidationSummary ID="valSummary" runat="server" ValidationGroup="valGroup" DisplayMode="BulletList"
+                    HeaderText="Se han producido los siguientes errores:" ShowMessageBox="true" ShowSummary="true"
+                    ShowValidationErrors="true" />
             </div>
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
                     <div class="button-container mb-3">
-                        <asp:Button ID="btnAceptar" OnClick="btnAceptar_Click" runat="server" CssClass="btn btn-info" Text="Save" />
-                      <asp:ValidationSummary ID="ValidationSummary1" runat="server" Display="Dynamic" ShowMessageBox="true" ShowSummary="false" ValidationGroup="valGroup" />
+                        <asp:Button ID="btnAceptar" OnClick="btnAceptar_Click" runat="server"  ValidationGroup="valGroup" CssClass="btn btn-info" Text="Save" />
+                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" Display="Dynamic" ShowMessageBox="true" ShowSummary="false" ValidationGroup="valGroup" />
                         <a class="btn btn-info" href="Articles.aspx">Back</a>
-                        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" CssClass="btn btn-danger" Text="Delete" />      
-                        <div class="mb-3" style="margin-top:10px ">
+                        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" CssClass="btn btn-danger" Text="Delete" />
+                        <div class="mb-3" style="margin-top: 10px">
                             <%if (ConfirmaEliminacion)
-                            {%>
-                            <asp:CheckBox Text="Confirm to delete" ID="chkConfirmDelete" runat="server"  />
+                                {%>
+                            <asp:CheckBox Text="Confirm to delete" ID="chkConfirmDelete" runat="server" />
                             <asp:Button ID="btnConfirmDelete" runat="server" OnClick="btnConfirmDelete_Click" CssClass="btn btn-outline-danger ms-2" Text="Delete" />
                             <% } %>
                         </div>
+                    </div>
+                    <div class="mb-3">
+                        <asp:Label CssClass="alert alert-success" Style="display: block; max-width: 300px; margin-top: 10px;"
+                            ID="lblSuccess" runat="server" Text="Changes have been saved successfully." Visible="false" ForeColor="Green"></asp:Label>
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>

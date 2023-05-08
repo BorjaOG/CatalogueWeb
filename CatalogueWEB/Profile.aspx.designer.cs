@@ -33,6 +33,15 @@ namespace CatalogueWEB
         protected global::System.Web.UI.WebControls.TextBox txtName;
 
         /// <summary>
+        /// lblErrorName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorName;
+
+        /// <summary>
         /// TxtSurname control.
         /// </summary>
         /// <remarks>
@@ -42,6 +51,15 @@ namespace CatalogueWEB
         protected global::System.Web.UI.WebControls.TextBox TxtSurname;
 
         /// <summary>
+        /// lblErrorSur control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorSur;
+
+        /// <summary>
         /// btnSaveProfile control.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,15 @@ namespace CatalogueWEB
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveProfile;
+
+        /// <summary>
+        /// lblSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuccess;
 
         /// <summary>
         /// lblImagenPerfil control.
@@ -69,13 +96,13 @@ namespace CatalogueWEB
         protected global::System.Web.UI.WebControls.FileUpload txtPhoto;
 
         /// <summary>
-        /// lblError control.
+        /// lblErrorPhoto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
+        protected global::System.Web.UI.WebControls.Label lblErrorPhoto;
 
         /// <summary>
         /// ImgPerfil control.

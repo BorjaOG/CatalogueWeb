@@ -32,7 +32,7 @@ namespace CatalogueWEB
             }
             if (string.IsNullOrEmpty(txtPassLogin.Text))
             {
-                lblMessage1.Text = "Please enter an Password.";
+                lblMessage1.Text = "Incorrect Password, try again.";
                 return;
             }
 
@@ -70,5 +70,13 @@ namespace CatalogueWEB
                 return false;
             }
         }
+        protected void txtEmailLogin_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtEmailLogin.Text) && IsValidEmail(txtEmailLogin.Text))
+            {
+                lblMessage.Visible = false;
+            }
+        }
+
     }
 }
