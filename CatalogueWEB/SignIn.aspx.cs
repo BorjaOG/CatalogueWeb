@@ -72,5 +72,14 @@ namespace CatalogueWEB
                 return false;
             }
         }
+
+        protected void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtEmail.Text) && IsValidEmail(txtEmail.Text))
+            {
+                lblMessage.Visible = false;
+            }
+
+        }
     }
 }

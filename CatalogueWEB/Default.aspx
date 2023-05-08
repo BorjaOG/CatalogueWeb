@@ -14,7 +14,11 @@
         <asp:Label ID="lblFilter" runat="server" Text="Search by Name:"></asp:Label>
         <asp:TextBox Style="margin-bottom: 6%" CssClass="form-control my-textbox" ID="txtFilter" runat="server" AutoPostBack="true" OnTextChanged="txtFilter_TextChanged"></asp:TextBox>
     </div>
-        <h5> <asp:Label ID="lblfav" runat="server" Visible="false" style="color:darkgoldenrod" Text="Article added to favorites ⭐"></asp:Label></h5>
+        <h5 style="margin-bottom:3%">
+  <asp:Label ID="lblfav" runat="server" Visible="false" style="color:darkgoldenrod" Text="">
+    <a href="Favorites.aspx" style="text-decoration: none; color: darkgoldenrod;">Article added to Favorites ⭐</a>
+  </asp:Label>
+</h5>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <asp:Repeater ID="RepeaterArticles" runat="server">
             <ItemTemplate>

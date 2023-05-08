@@ -14,7 +14,7 @@ namespace CatalogueWEB
 {
     public partial class ArticlesForm : System.Web.UI.Page
     {
-       public bool ConfirmaEliminacion { get; set; }
+        public bool ConfirmaEliminacion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Attributes.Add("required", "true");
@@ -62,19 +62,19 @@ namespace CatalogueWEB
                     //List<Articulo> lista = negocio.listar(Id);
                     //Articulo selected = lista[0];
                     Articulo selected = (negocio.listar(Id))[0];
-                    
-                    // datos precargados //
-                        txtId.Text = Id;
-                        txtNombre.Text = selected.Nombre;
-                        txtCodigo.Text = selected.Codigo;
-                        txtDescripcion.Text = selected.Descripcion;
-                        txtUrlImagen.Text = selected.UrlImagen;
-                        txtPrecio.Text = selected.Precio.ToString();
 
-                        ddlCategoria.SelectedValue = selected.Categoria.Id.ToString();
-                        ddlMarca.SelectedValue = selected.Marca.Id.ToString();
-                        txtUrlImagen_TextChanged(sender, e);
-                    }               
+                    // datos precargados //
+                    txtId.Text = Id;
+                    txtNombre.Text = selected.Nombre;
+                    txtCodigo.Text = selected.Codigo;
+                    txtDescripcion.Text = selected.Descripcion;
+                    txtUrlImagen.Text = selected.UrlImagen;
+                    txtPrecio.Text = selected.Precio.ToString();
+
+                    ddlCategoria.SelectedValue = selected.Categoria.Id.ToString();
+                    ddlMarca.SelectedValue = selected.Marca.Id.ToString();
+                    txtUrlImagen_TextChanged(sender, e);
+                }
             }
             catch (Exception ex)
             {
@@ -88,11 +88,6 @@ namespace CatalogueWEB
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (valPrecio.IsValid == false)
-            {
-                lblPrecioError.Text = "El precio debe ser un número válido";
-                return;
-            }
 
             try
             {
@@ -103,24 +98,35 @@ namespace CatalogueWEB
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Descripcion = txtDescripcion.Text;
                 nuevo.UrlImagen = txtUrlImagen.Text;
-                nuevo.Precio = decimal.Parse(txtPrecio.Text);
-
-                nuevo.Marca = new Marca();
-                nuevo.Marca.Id = int.Parse(ddlMarca.SelectedValue);
-                nuevo.Categoria = new Categoria();
-                nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
-
-                if (Request.QueryString["Id"] != null)
+                if (decimal.TryParse(txtPrecio.Text, out decimal precio))
                 {
-                    nuevo.Id = int.Parse(txtId.Text);
-                    negocio.modificarSP(nuevo);
+                    nuevo.Precio = precio;
+
+                    nuevo.Marca = new Marca();
+                    nuevo.Marca.Id = int.Parse(ddlMarca.SelectedValue);
+                    nuevo.Categoria = new Categoria();
+                    nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
+
+                    if (Request.QueryString["Id"] != null)
+                    {
+                        nuevo.Id = int.Parse(txtId.Text);
+                        negocio.modificarSP(nuevo);
+                    }
+                    else
+                    {
+                        negocio.AgregarSP(nuevo);
+                    }
+
+                    Response.Redirect("Articles.aspx", false);
                 }
                 else
-                negocio.AgregarSP(nuevo);
-                Response.Redirect("Articles.aspx", false);
+                {
+                    lblPrecioError.Text = "El valor ingresado en el campo Precio es inválido.";
+                }
             }
             catch (Exception ex)
             {
+                lblPrecioError.Text = "Error al procesar el precio: " + ex.Message;
                 Session.Add("error", ex);
                 throw;
             }
@@ -138,15 +144,15 @@ namespace CatalogueWEB
 
                 if (chkConfirmDelete.Checked)
                 {
-                     ArticuloNegocio negocio = new ArticuloNegocio();
-                     negocio.delete(int.Parse(txtId.Text));
-                     Response.Redirect("Articles.aspx");
+                    ArticuloNegocio negocio = new ArticuloNegocio();
+                    negocio.delete(int.Parse(txtId.Text));
+                    Response.Redirect("Articles.aspx");
                 }
             }
             catch (Exception ex)
             {
 
-               Session.Add("error", ex);
+                Session.Add("error", ex);
             }
         }
     }

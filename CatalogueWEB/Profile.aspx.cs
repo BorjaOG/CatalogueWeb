@@ -16,7 +16,9 @@ namespace CatalogueWEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblError.Visible = false;
+            lblErrorPhoto.Visible = false;
+            lblErrorName.Visible = false;
+            lblErrorSur.Visible = false;
 
             try
             {
@@ -68,18 +70,26 @@ namespace CatalogueWEB
             
             if (!txtPhoto.HasFile)
             {
-                lblError.Text = "Enter a new Image please";
-                lblError.ForeColor = System.Drawing.Color.Red;
-                lblError.Visible = true;
+                lblErrorPhoto.Text = "Enter a new Image please";
+                lblErrorPhoto.ForeColor = System.Drawing.Color.Red;
+                lblErrorPhoto.Visible = true;
                 return;
             }
 
             try
             {
-                if (string.IsNullOrEmpty(txtName.Text.Trim()) || string.IsNullOrEmpty(TxtSurname.Text.Trim()))
+                if (string.IsNullOrEmpty(txtName.Text.Trim()))
                 {
-                    lblError.Visible = true;
-                    lblError.Text = "Name and Surname required.";
+                    lblErrorName.ForeColor = System.Drawing.Color.Red;
+                    lblErrorName.Visible = true;
+                    
+                    return;
+                }
+                if (string.IsNullOrEmpty(TxtSurname.Text.Trim()))
+                {
+                    lblErrorSur.ForeColor = System.Drawing.Color.Red;
+                    lblErrorSur.Visible = true;
+                  
                     return;
                 }
                 UsuarioNegocio negocio = new UsuarioNegocio();
@@ -104,7 +114,9 @@ namespace CatalogueWEB
                     img.ImageUrl = "~/Images/" + user.UrlImagenPerfil + "?v=" + DateTime.Now.Ticks.ToString();                  
                     ImgPerfil.ImageUrl = "~/Images/" + user.UrlImagenPerfil + "?v=" + DateTime.Now.Ticks.ToString();
 
-                    Debug.WriteLine("Imagen guardada en: " + filePath);
+                    lblSuccess.Text = "Changes have been saved.";
+                    lblSuccess.ForeColor = System.Drawing.Color.Green;
+                    lblSuccess.Visible = true;
                 }
                 else
                 {

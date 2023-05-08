@@ -9,7 +9,8 @@
         <div class="col-4">           
             <div style= "margin-top:20px" class="mb-3">
                 <label class="form-label">Email address</label>
-                <asp:TextBox placeholder="example@mail.com" ID="txtEmailLogin" CssClass="form-control" runat="server"></asp:TextBox>
+              <asp:TextBox placeholder="example@mail.com" ID="txtEmailLogin" CssClass="form-control" runat="server" OnTextChanged="txtEmailLogin_TextChanged"></asp:TextBox>
+
                  <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
@@ -24,17 +25,17 @@
         </div> 
     </div><asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
     <script>
-            function validateForm() {
-                var email = document.getElementById("email").value;
-                var message = document.getElementById("pass").value;
+        function validateForm() {
+            var email = document.getElementById("txtEmailLogin").value;
+            var pass = document.getElementById("txtPassLogin").value;
 
-                if (email === "" || pass === "") {
-                    alert("Please enter required fields (*)");
-                    return false;
-                }
-                
-                document.getElementById("lblMessage").style.display = "block";
-                return true;
+            if (email === "" || pass === "") {
+                alert("Please enter required fields (*)");
+                return false;
+            }
+
+            document.getElementById("lblMessage").style.display = "none";
+            return true;
         }
     </script>
 </asp:Content>

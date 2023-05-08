@@ -8,7 +8,7 @@
         <div class="col-4">           
             <div style= "margin-top:20px" class="mb-3">
                 <label class="form-label">Email address</label>
-                <asp:TextBox class="form-text"  ID="txtEmail" CssClass="form-control"  placeholder="example@mail.com" runat="server"></asp:TextBox>
+                <asp:TextBox class="form-text"  ID="txtEmail" CssClass="form-control" OnTextChanged="txtEmail_TextChanged"  placeholder="example@mail.com" runat="server"></asp:TextBox>
                 <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
 
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
