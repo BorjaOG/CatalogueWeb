@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Service
 {
@@ -18,7 +19,8 @@ namespace Service
         }
         public DataAcces()
         {
-            conection = new SqlConnection("server=DESKTOP-6NCI6TM\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true");
+            conection = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]);
+            //conection = new SqlConnection("server=DESKTOP-6NCI6TM\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true");
             comand = new SqlCommand();
         }
         public void setearConsulta(string consulta)
