@@ -19,25 +19,25 @@
     <a href="Favorites.aspx" style="text-decoration: none; color: darkgoldenrod;">Article added to Favorites ⭐</a>
   </asp:Label>
 </h5>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <asp:Repeater ID="RepeaterArticles" runat="server">
-            <ItemTemplate>
-                <div class="col">
-                    <div class="card" runat="server">
-                        <img src="<%#Eval("UrlImagen") %>" alt="..." class="card-img-top" onerror="this.src='https://www.mansor.com.uy/wp-content/uploads/2020/06/imagen-no-disponible2.jpg'" />
-                        <div class="card-body">
-                            <h5 class="card-title"><%#Eval("Nombre") %></h5>
-                            <p class="card-text"><%#Eval("Descripcion") %></p>
-                            <p class="card-text">$<%# string.Format("{0:0.00}", Eval("Precio")) %></p>
-                            <a id="btn-detail" class="btn btn-info" href="Details.aspx?Id=<%#Eval("Id") %>">View Details</a>
-                            <asp:Button Style="margin-left: 5%; border-radius: 50%; background: transparent"
-                               CssClass="btn btn-info btn-fav" ID="btnFav" OnClick="btnFav_Click" runat="server" Text="⭐"
-                                CommandArgument='<%#Eval("Id") %>' />
-                        </div>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-4">
+    <asp:Repeater ID="RepeaterArticles" runat="server">
+        <ItemTemplate>
+            <div class="col-md-4 col-6">
+                <div class="card" runat="server">
+                    <img src="<%#Eval("UrlImagen") %>" alt="..." class="card-img-top" onerror="this.src='https://www.mansor.com.uy/wp-content/uploads/2020/06/imagen-no-disponible2.jpg'" />
+                    <div class="card-body">
+                        <h5 class="card-title"><%#Eval("Nombre") %></h5>
+                        <p class="card-text"><%#Eval("Descripcion") %></p>
+                        <p class="card-text">$<%# string.Format("{0:0.00}", Eval("Precio")) %></p>
+                        <a id="btn-detail" class="btn btn-info" href="Details.aspx?Id=<%#Eval("Id") %>">View Details</a>
+                        <asp:Button Style="margin-left: 5%; border-radius: 50%; background: transparent"
+                           CssClass="btn btn-info btn-fav" ID="btnFav" OnClick="btnFav_Click" runat="server" Text="⭐"
+                            CommandArgument='<%#Eval("Id") %>' />
                     </div>
                 </div>
-            </ItemTemplate>
-        </asp:Repeater>
-    </div>
+            </div>
+        </ItemTemplate>
+    </asp:Repeater>
+</div>
 </asp:Content>
 
