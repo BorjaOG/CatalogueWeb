@@ -40,7 +40,7 @@
         <div class="col-md-12">
             <asp:Button OnClientClick="return validateForm();" onclick="btnEnviar_Click" style="margin-top:3%" ID="btnEnviar" 
                 class="btn btn-info" runat="server" Text="Send" />
-            <asp:Button style="margin-top:3%" class="btn btn-info" ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Back"  />
+            <asp:Button style="margin-top:3%" class="btn btn-primary" ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Back"  />
             </div>
             <asp:Label style="display: block; max-width: 300px; margin-top: 10px;" ID="lblMessage" runat="server" Visible="false" CssClass="alert alert-success"></asp:Label>
         <script>

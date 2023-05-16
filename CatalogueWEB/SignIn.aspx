@@ -19,7 +19,7 @@
              <asp:Label ID="lblMessage1" runat="server" ForeColor="Red"></asp:Label>
             </div>
             <asp:Button style= "margin-top:10px" runat="server" type="submit" ID="btnSignIn" OnClick="btnSignIn_Click" class="btn btn-info" Text="Sign Up" />          
-            <a style= "margin-top:10px" class="btn btn-info" href="Default.aspx">Back</a>
+            <a style= "margin-top:10px" class="btn btn-primary" href="Default.aspx">Back</a>
         </div> 
     </div>
     <script>
