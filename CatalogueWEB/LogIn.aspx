@@ -20,7 +20,8 @@
              <asp:Label ID="lblMessage1" runat="server" ForeColor="Red"></asp:Label>
             </div>
             <asp:Button style= "margin-top:10px" runat="server" type="submit" ID="btnlogIn" Onclick="btnlogIn_Click" class="btn btn-info" Text="Log In" />          
-            <a style= "margin-top:10px" class="btn btn-info" href="Default.aspx">Back</a>
+            <a style= "margin-top:10px" class="btn btn-info" href="SignIn.aspx">Register</a>
+            <a style= "margin-top:10px" class="btn btn-primary" href="Default.aspx">Back</a>
             
         </div> 
     </div><asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>

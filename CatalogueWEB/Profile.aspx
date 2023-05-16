@@ -31,7 +31,7 @@
             </div>
             <div style="margin-top:10%">
             <asp:Button  runat="server" type="submit" ID="btnSaveProfile" Onclick="btnSaveProfile_Click" class="btn btn-info" Text="Save" />          
-            <a  class="btn btn-info" href="Default.aspx">Back</a>
+            <a  class="btn btn-primary" href="Default.aspx">Back</a>
         </div>
                <div class="mb-3">
             <asp:Label CssClass="alert alert-success" style="display: block; max-width: 300px; 
