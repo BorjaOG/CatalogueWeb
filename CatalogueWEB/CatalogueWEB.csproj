@@ -76,6 +76,8 @@
     <Content Include="Error.aspx" />
     <Content Include="Favorites.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Home.aspx" />
+    <Content Include="Images\room.jpg" />
     <Content Include="LogIn.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Scripts\JavaScript.js" />
@@ -135,6 +137,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
     <Compile Include="LogIn.aspx.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -175,9 +184,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{b828ce7c-087d-4c3a-bf13-dfce2ccefd84}</Project>
