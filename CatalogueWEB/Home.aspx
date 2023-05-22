@@ -99,6 +99,7 @@
         </div>
         <div class="centered-content">
             <h1  style="font-weight:900">Gaming Paradise</h1>
+            <h5 style="color:#fff;font-weight:500">Welcome to our online catalogue!</h5>
             <div class="typing-effect">
             <p id="description-text"  style="color:#fff;font-weight:500">Elevate your gaming experience with us! Discover consoles and gaming gear for the ultimate gaming adventure. Shop now and level up!</p>
            </div> <a href="Default.aspx">
