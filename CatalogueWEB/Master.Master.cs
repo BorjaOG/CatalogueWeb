@@ -13,9 +13,10 @@ namespace CatalogueWEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Security.ActiveSession(Session["trainee"]))
+            if (Security.ActiveSession(Session["user"]))
             {
-                User user = (User)Session["trainee"];
+                
+                    User user = (User)Session["user"];
                 
                 if (!string.IsNullOrEmpty(user.UrlImagenPerfil))
                 {
@@ -25,7 +26,18 @@ namespace CatalogueWEB
                 {
                     imgAvatar.ImageUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
                 }
+                bool isAdmin = Security.IsAdmin(Session["user"]);
 
+                if (isAdmin)
+                {
+                    // Mostrar el enlace solo si el usuario es administrador
+                    liArticles.Visible = true;
+                }
+                else
+                {
+                    // Ocultar el enlace si el usuario no es administrador
+                    liArticles.Visible = false;
+                }
             }
             else
             {
@@ -51,8 +63,6 @@ namespace CatalogueWEB
                 btnLogIn.Visible = false;
                 btnSignIn.Visible = false;
             }
-
-
             else
             {
                 imgAvatar.ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
