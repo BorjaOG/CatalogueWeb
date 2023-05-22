@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.UI;
@@ -10,9 +11,14 @@ namespace CatalogueWEB
 {
     public class Global : System.Web.HttpApplication
     {
-
+        private void RegisterRoutes(RouteCollection routes)
+        {
+            routes.MapPageRoute("HomePage", "", "~/Home.aspx");
+            // Agrega otras rutas según tus necesidades
+        }
         protected void Application_Start(object sender, EventArgs e)
         {
+            RegisterRoutes(RouteTable.Routes);
             string JQueryVer = "1.11.3";
             ScriptManager.ScriptResourceMapping.AddDefinition("jquery", new ScriptResourceDefinition
             {
