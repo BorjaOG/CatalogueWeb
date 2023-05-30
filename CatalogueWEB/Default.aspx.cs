@@ -15,6 +15,7 @@ namespace CatalogueWEB
 {
     public partial class Default : System.Web.UI.Page
     {
+
         public List<Articulo> ListaArticulos { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
